@@ -11,6 +11,9 @@ import './tasks/network'
 import * as dotenv from 'dotenv'
 dotenv.config()
 
+if (!process.env.projectPrivateKey || process.env.projectPrivateKey.length < 1)
+    throw new Error('Missing Project Private Key')
+
 if (!process.env.masterPrivateKey || process.env.masterPrivateKey.length < 1)
     throw new Error('Missing Master Private Key')
 
@@ -46,52 +49,92 @@ const config: HardhatUserConfig = {
         mainnet: {
             url: `https://mainnet.infura.io/v3/${process.env.infuraAPIKey}`,
             chainId: 1,
-            accounts: [process.env.masterPrivateKey, process.env.backupPrivateKey],
+            accounts: [
+                process.env.projectPrivateKey,
+                process.env.masterPrivateKey,
+                process.env.backupPrivateKey,
+            ],
         },
         goerli: {
             url: `https://goerli.infura.io/v3/${process.env.infuraAPIKey}`,
             chainId: 5,
-            accounts: [process.env.masterPrivateKey, process.env.backupPrivateKey],
+            accounts: [
+                process.env.projectPrivateKey,
+                process.env.masterPrivateKey,
+                process.env.backupPrivateKey,
+            ],
         },
         polygon: {
             url: `https://polygon-mainnet.infura.io/v3/${process.env.infuraAPIKey}`,
             chainId: 137,
-            accounts: [process.env.masterPrivateKey, process.env.backupPrivateKey],
+            accounts: [
+                process.env.projectPrivateKey,
+                process.env.masterPrivateKey,
+                process.env.backupPrivateKey,
+            ],
         },
         polygonMumbai: {
             url: `https://polygon-mumbai.infura.io/v3/${process.env.infuraAPIKey}`,
             chainId: 80001,
-            accounts: [process.env.masterPrivateKey, process.env.backupPrivateKey],
+            accounts: [
+                process.env.projectPrivateKey,
+                process.env.masterPrivateKey,
+                process.env.backupPrivateKey,
+            ],
         },
         arbitrumOne: {
             url: `https://arbitrum-mainnet.infura.io/v3/${process.env.infuraAPIKey}`,
             chainId: 42161,
-            accounts: [process.env.masterPrivateKey, process.env.backupPrivateKey],
+            accounts: [
+                process.env.projectPrivateKey,
+                process.env.masterPrivateKey,
+                process.env.backupPrivateKey,
+            ],
         },
         arbitrumGoerli: {
             url: `https://arbitrum-goerli.infura.io/v3/${process.env.infuraAPIKey}`,
             chainId: 421613,
-            accounts: [process.env.masterPrivateKey, process.env.backupPrivateKey],
+            accounts: [
+                process.env.projectPrivateKey,
+                process.env.masterPrivateKey,
+                process.env.backupPrivateKey,
+            ],
         },
         bsc: {
             url: 'https://bsc-dataseed1.binance.org/',
             chainId: 56,
-            accounts: [process.env.masterPrivateKey, process.env.backupPrivateKey],
+            accounts: [
+                process.env.projectPrivateKey,
+                process.env.masterPrivateKey,
+                process.env.backupPrivateKey,
+            ],
         },
         bscTestnet: {
             url: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
             chainId: 97,
-            accounts: [process.env.masterPrivateKey, process.env.backupPrivateKey],
+            accounts: [
+                process.env.projectPrivateKey,
+                process.env.masterPrivateKey,
+                process.env.backupPrivateKey,
+            ],
         },
         cronos: {
             url: '',
             chainId: 25,
-            accounts: [process.env.masterPrivateKey, process.env.backupPrivateKey],
+            accounts: [
+                process.env.masterPrivateKey,
+                process.env.masterPrivateKey,
+                process.env.backupPrivateKey,
+            ],
         },
         cronosTestnet: {
             url: 'https://evm-t3.cronos.org/',
             chainId: 338,
-            accounts: [process.env.masterPrivateKey, process.env.backupPrivateKey],
+            accounts: [
+                process.env.projectPrivateKey,
+                process.env.masterPrivateKey,
+                process.env.backupPrivateKey,
+            ],
         },
     },
 

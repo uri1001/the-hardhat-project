@@ -216,7 +216,7 @@ Format All Code
 
 ## 4. Resources
 
-#### 4.1. Solidity Documentation
+### 4.1. Solidity Documentation
 
 Solidity Official Documentation: [Documentation](https://docs.soliditylang.org/en/v0.8.19/)
 
@@ -226,25 +226,25 @@ Solidity Official NatSpec: [NatSpec](https://docs.soliditylang.org/en/v0.8.19/na
 
 Solidity Official Style Guide: [Style](https://docs.soliditylang.org/en/v0.8.19/style-guide.html)
 
-#### 4.2. TypeScript Documentation
+### 4.2. TypeScript Documentation
 
 TypeScript Official Documentation: [Documentation](https://www.typescriptlang.org/docs/)
 
-#### 4.3. Ethers Documentation
+### 4.3. Ethers Documentation
 
 Ethers Official Documentation: [Documentation](https://docs.ethers.org/v5/)
 
-#### 4.4. Hardhat Documentation
+### 4.4. Hardhat Documentation
 
 Hardhat Official Documentation: [Documentation](https://hardhat.org/docs)
 
-#### 4.5. Lint Tool
+### 4.5. Lint Tool
 
 Hardhat Official Documentation: [Documentation](https://protofire.github.io/solhint/)
 
 Solhint Supported Rules: [Rules](https://github.com/protofire/solhint/blob/master/docs/rules.md)
 
-#### 4.6. Format Tool
+### 4.6. Format Tool
 
 Prettier Official Documentation: [Documentation](https://prettier.io/docs/en/)
 
