@@ -68,7 +68,7 @@
 
 <!-- ABOUT THE PROJECT -->
 
-## About The Project
+## 1. About The Project
 
 Hardhat Environment Template with a Professional Basic & Customized Setup
 
@@ -76,7 +76,7 @@ The goal is to create a Hardhat basic enviroment setup that reduces the amount o
 a new Solidity project. Achieved by implementing complex processes with tasks & scripts.
 Includes formatting, linting and source control tools with their respective rules.
 
-### Features
+### 1.1. Features
 
 -   [ ] Custom Scripts
     -   [ ] Deploy - Contract Deployment Generic Script
@@ -99,12 +99,12 @@ See the [open issues](https://github.com/uri1001/tgp-hardhat/issues) for a full 
 
 <!-- PROJECT INITIALIZATION -->
 
-## Project Initialization
+## 2. Project Initialization
 
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+### 2.1. Prerequisites
 
 Package manager installation (npm)
 
@@ -113,7 +113,7 @@ Package manager installation (npm)
     npm install npm@latest -g
     ```
 
-### Installation
+### 2.2. Installation
 
 1. Clone the repo
     ```sh
@@ -139,9 +139,9 @@ Package manager installation (npm)
 
 <!-- DOCUMENTATION -->
 
-## Documentation
+## 3. Documentation
 
-### Hardhat Tasks
+### 3.1. Hardhat Tasks
 
 Get Information
 `sh
@@ -176,7 +176,7 @@ Usage: hardhat [GLOBAL OPTIONS] <TASK> [TASK OPTIONS]
 
 To get help for a specific task run: npx hardhat help <task>
 
-### Compilation, Deployment & Verification
+### 3.2. Compilation, Deployment & Verification
 
 Compile Contracts
 `sh
@@ -193,7 +193,7 @@ Verify Contracts
     npx hardhat verify --network <network> <contract-address> <constructor-arguments>
     `
 
-### Linting & Formatting
+### 3.3. Linting & Formatting
 
 Lint All Contracts
 `sh
@@ -213,33 +213,37 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 <!-- RESOURCES -->
 
-## Resources
+## 4. Resources
 
-#### Solidity Documentation
+#### 4.1. Solidity Documentation
 
 Solidity Official Documentation: [Documentation](https://docs.soliditylang.org/en/v0.8.19/)
+
 Solidity Official Security Considerations: [Security](https://docs.soliditylang.org/en/v0.8.19/security-considerations.html)
+
 Solidity Official NatSpec: [NatSpec](https://docs.soliditylang.org/en/v0.8.19/natspec-format.html)
+
 Solidity Official Style Guide: [Style](https://docs.soliditylang.org/en/v0.8.19/style-guide.html)
 
-#### TypeScript Documentation
+#### 4.2. TypeScript Documentation
 
 TypeScript Official Documentation: [Documentation](https://www.typescriptlang.org/docs/)
 
-#### Ethers Documentation
+#### 4.3. Ethers Documentation
 
 Ethers Official Documentation: [Documentation](https://docs.ethers.org/v5/)
 
-#### Hardhat Documentation
+#### 4.4. Hardhat Documentation
 
 Hardhat Official Documentation: [Documentation](https://hardhat.org/docs)
 
-#### Lint Tool
+#### 4.5. Lint Tool
 
 Hardhat Official Documentation: [Documentation](https://protofire.github.io/solhint/)
+
 Solhint Supported Rules: [Rules](https://github.com/protofire/solhint/blob/master/docs/rules.md)
 
-#### Format Tool
+#### 4.6. Format Tool
 
 Prettier Official Documentation: [Documentation](https://prettier.io/docs/en/)
 
@@ -247,7 +251,7 @@ Prettier Official Documentation: [Documentation](https://prettier.io/docs/en/)
 
 <!-- LICENSE -->
 
-## License
+## 5. License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
