@@ -75,7 +75,6 @@ Hardhat Environment Template with a Professional Basic & Customized Setup
 The goal is to create a Hardhat basic enviroment setup that reduces the amount of time needed to create
 a new Solidity project. Achieved by implementing complex processes with tasks & scripts.
 Includes formatting, linting and source control tools with their respective rules.
-<br />
 
 ### 1.1. Features
 
@@ -98,6 +97,8 @@ Includes formatting, linting and source control tools with their respective rule
 
 See the [open issues](https://github.com/uri1001/tgp-hardhat/issues) for a full list of proposed features (and known issues).
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <!-- PROJECT INITIALIZATION -->
 
 ## 2. Project Initialization
@@ -110,7 +111,6 @@ Package manager installation (npm)
     ```sh
     npm install npm@latest -g
     ```
-    <br />
 
 ### 2.2. Installation
 
@@ -180,7 +180,6 @@ Usage: hardhat [GLOBAL OPTIONS] <TASK> [TASK OPTIONS]
     test          Runs mocha tests
 
 To get help for a specific task run: npx hardhat help <task>
-<br />
 
 ### 3.2. Compilation, Deployment & Verification
 
@@ -198,7 +197,6 @@ Verify Contracts
 `sh
     npx hardhat verify --network <network> <contract-address> <constructor-arguments>
     `
-<br />
 
 ### 3.3. Linting & Formatting
 
@@ -227,29 +225,24 @@ Solidity Official Security Considerations: [Security](https://docs.soliditylang.
 Solidity Official NatSpec: [NatSpec](https://docs.soliditylang.org/en/v0.8.19/natspec-format.html)
 
 Solidity Official Style Guide: [Style](https://docs.soliditylang.org/en/v0.8.19/style-guide.html)
-<br />
 
 #### 4.2. TypeScript Documentation
 
 TypeScript Official Documentation: [Documentation](https://www.typescriptlang.org/docs/)
-<br />
 
 #### 4.3. Ethers Documentation
 
 Ethers Official Documentation: [Documentation](https://docs.ethers.org/v5/)
-<br />
 
 #### 4.4. Hardhat Documentation
 
 Hardhat Official Documentation: [Documentation](https://hardhat.org/docs)
-<br />
 
 #### 4.5. Lint Tool
 
 Hardhat Official Documentation: [Documentation](https://protofire.github.io/solhint/)
 
 Solhint Supported Rules: [Rules](https://github.com/protofire/solhint/blob/master/docs/rules.md)
-<br />
 
 #### 4.6. Format Tool
 
