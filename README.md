@@ -31,38 +31,38 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-        <a href="#about-the-project">About The Project</a>
+        <a href="#1-about-the-project">1. About The Project</a>
         <ul>
-            <li><a href="#features">Features</a></li>
+            <li><a href="#11-features">1.1. Features</a></li>
         </ul>
     </li>
     <li>
-        <a href="#project-initialization">Project Initialization</a>
+        <a href="#2-project-initialization">2. Project Initialization</a>
         <ul>
-            <li><a href="#prerequisites">Prerequisites</a></li>
-            <li><a href="#installation">Installation</a></li>
+            <li><a href="#21-prerequisites">2.1. Prerequisites</a></li>
+            <li><a href="#22-installation">2.2. Installation</a></li>
         </ul>
     </li>
     <li>
-        <a href="#documentation">Documentation</a>      
+        <a href="#3-documentation">Documentation</a>      
         <ul>
-            <li><a href="#hardhat-tasks">Hardhat Tasks</a></li>
-            <li><a href="#compilation-deployment-&-verification">Compilation, Deployment & Verification</a></li>
-            <li><a href="#linting-&-formatting">Linting & Formatting</a></li>
+            <li><a href="#31-hardhat-tasks">3.1. Hardhat Tasks</a></li>
+            <li><a href="#32-compilation-deployment-&-verification">3.2. Compilation, Deployment & Verification</a></li>
+            <li><a href="#33-linting-&-formatting">3.3. Linting & Formatting</a></li>
         </ul>
     </li>
     <li>
-        <a href="#resources">Resources</a>
+        <a href="#4-resources">4. Resources</a>
         <ul>
-            <li><a href="#solidity-documentation">Hardhat Tasks</a></li>
-            <li><a href="#typescript-documentation">TypeScript Documentation</a></li>
-            <li><a href="#ethers-documentation">Ethers Documentation</a></li>
-            <li><a href="#hardhat-documentation">Hardhat Documentation</a></li>
-            <li><a href="#lint-tool">Lint Tool</a></li>
-            <li><a href="#format-tool">Format Tool</a></li>
+            <li><a href="#41-solidity-documentation">4.1. Hardhat Tasks</a></li>
+            <li><a href="#42-typescript-documentation">4.2. TypeScript Documentation</a></li>
+            <li><a href="#43-ethers-documentation">4.3. Ethers Documentation</a></li>
+            <li><a href="#44-hardhat-documentation">4.4. Hardhat Documentation</a></li>
+            <li><a href="#45-lint-tool">4.5. Lint Tool</a></li>
+            <li><a href="#46-format-tool">4.6. Format Tool</a></li>
         </ul>
     </li>
-    <li><a href="#license">License</a></li>
+    <li><a href="#5-license">5. License</a></li>
   </ol>
 </details>
 
