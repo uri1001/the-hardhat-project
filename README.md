@@ -31,13 +31,13 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-        <a href="#1-about-the-project">1. About The Project</a>
+        <a href="#1-about-the-project">About The Project</a>
         <ul>
             <li><a href="#11-features">1.1. Features</a></li>
         </ul>
     </li>
     <li>
-        <a href="#2-project-initialization">2. Project Initialization</a>
+        <a href="#2-project-initialization">Project Initialization</a>
         <ul>
             <li><a href="#21-prerequisites">2.1. Prerequisites</a></li>
             <li><a href="#22-installation">2.2. Installation</a></li>
@@ -52,17 +52,22 @@
         </ul>
     </li>
     <li>
-        <a href="#4-resources">4. Resources</a>
+        <a href="#4-resources">Resources</a>
         <ul>
             <li><a href="#41-solidity-documentation">4.1. Hardhat Tasks</a></li>
             <li><a href="#42-typescript-documentation">4.2. TypeScript Documentation</a></li>
             <li><a href="#43-ethers-documentation">4.3. Ethers Documentation</a></li>
             <li><a href="#44-hardhat-documentation">4.4. Hardhat Documentation</a></li>
-            <li><a href="#45-lint-tool">4.5. Lint Tool</a></li>
-            <li><a href="#46-format-tool">4.6. Format Tool</a></li>
+            <ul>
+                <li><a href="#441-hardhat-official-plugins">4.4.1. Hardhat Official Plugins</a></li>
+                <li><a href="#442-hardhat-community-plugins">4.4.2. Hardhat Community Plugins</a></li>
+            </ul>
+            <li><a href="#45-openzeppelin-documentation">4.5. Openzeppelin Documentation</a></li>
+            <li><a href="#46-lint-tool">4.6. Lint Tool</a></li>
+            <li><a href="#47-format-tool">4.7. Format Tool</a></li>
         </ul>
     </li>
-    <li><a href="#5-license">5. License</a></li>
+    <li><a href="#5-license">License</a></li>
   </ol>
 </details>
 
@@ -78,19 +83,37 @@ Includes formatting, linting and source control tools with their respective rule
 
 ### 1.1. Features
 
--   [ ] Custom Scripts
-    -   [ ] Deploy - Contract Deployment Generic Script
--   [ ] Custom Tasks
-    -   [ ] Accounts
-    -   [ ] Extend Accounts
-    -   [ ] Info
-    -   [ ] Network
+-   [ ] Generic Scripts
+    -   [ ] Deploy - contract deployment generic script
+    -   [ ] Delegate - ERC20Votes standard delegation generic script
+    -   [ ] Mint - ERC20 standard mint generic script
+    -   [ ] Burn - ERC20 standard burn generic script
+    -   [ ] Vote - TokenizedBallot contract voting generic script
+-   [ ] Generic Tasks
+    -   [ ] Accounts - selected network accounts information
+    -   [ ] Info - selected address basic information
+    -   [ ] Network - selected network information
+-   [ ] Reporting
+    -   [ ] Contract Size Report - on compilation a contract size report is generated in reports
 -   [ ] Wide Network Support
     -   [ ] Ethereum - mainnet & goerli
     -   [ ] Polygon - polygon & polygonMumbai
     -   [ ] Arbitrum - arbitrumOne & arbitrumGoerli
+    -   [ ] Optimism - optimism & optimismGoerli
     -   [ ] BSC - bsc & bscTestnet
     -   [ ] Cronos - cronos & cronosTestnet
+-   [ ] Hardhat Official Plugins
+    -   [ ] Hardhat Toolbox - commonly used packages and Hardhat plugins
+    -   [ ] Hardhat Ethers - wrapped version of ethers.js adapted to Hardhat (installed with Toolbox plugin)
+    -   [ ] Hardhat Chai Matchers - EVM specific capabilities for Chai (installed with Toolbox plugin)
+    -   [ ] Hardhat Network Helpers - helper functions to interact with Hardhat network (installed with Toolbox plugin)
+    -   [ ] Hardhat Etherscan - contract verification service (installed with Toolbox plugin)
+-   [ ] Hardhat Community Plugins
+    -   [ ] Hardhat Gas Reporter - gas usage related reports (installed with Toolbox plugin)
+    -   [ ] Hardhat Solidity Coverage - code coverage (installed with Toolbox plugin)
+    -   [ ] Hardhat Typechain - Typescript bindings for contracts (installed with Toolbox plugin)
+    -   [ ] Hardhat Contract Sizer - calculate compiled contract size
+    -   [ ] Hardhat Storage Layout - generate contract storage layout
 -   [ ] Solidity Linting with Solhint
 -   [ ] Code Formatting with Prettier
 -   [ ] Code Formatting Enforcement with Husky
@@ -218,35 +241,79 @@ Format All Code
 
 ### 4.1. Solidity Documentation
 
-Solidity Official Documentation: [Documentation](https://docs.soliditylang.org/en/v0.8.19/)
+Official Documentation: [Documentation](https://docs.soliditylang.org/en/latest/)
 
-Solidity Official Security Considerations: [Security](https://docs.soliditylang.org/en/v0.8.19/security-considerations.html)
+Official Structure of Contract: [Structure](https://docs.soliditylang.org/en/latest/structure-of-a-contract.html)
 
-Solidity Official NatSpec: [NatSpec](https://docs.soliditylang.org/en/v0.8.19/natspec-format.html)
+Official Language Grammar: [Grammar](https://docs.soliditylang.org/en/latest/grammar.html)
 
-Solidity Official Style Guide: [Style](https://docs.soliditylang.org/en/v0.8.19/style-guide.html)
+Official Security Considerations: [Security](https://docs.soliditylang.org/en/latest/security-considerations.html)
+
+Official Storage Layout fo State Variables: [Storage](https://docs.soliditylang.org/en/latest/internals/layout_in_storage.html)
+
+Official NatSpec: [NatSpec](https://docs.soliditylang.org/en/latest/natspec-format.html)
+
+Official Style Guide: [Style](https://docs.soliditylang.org/en/latest/style-guide.html)
 
 ### 4.2. TypeScript Documentation
 
-TypeScript Official Documentation: [Documentation](https://www.typescriptlang.org/docs/)
+Official Documentation: [Documentation](https://www.typescriptlang.org/docs/)
 
 ### 4.3. Ethers Documentation
 
-Ethers Official Documentation: [Documentation](https://docs.ethers.org/v5/)
+Official Documentation: [Documentation](https://docs.ethers.org/v5/)
+
+Cheatsheet: [Cheatsheet](https://dev.to/hideckies/ethers-js-cheat-sheet-1h5j)
 
 ### 4.4. Hardhat Documentation
 
-Hardhat Official Documentation: [Documentation](https://hardhat.org/docs)
+Official Documentation: [Documentation](https://hardhat.org/docs)
 
-### 4.5. Lint Tool
+Contract Testing Framework - Mocha: [Documentation](https://mochajs.org/)
 
-Hardhat Official Documentation: [Documentation](https://protofire.github.io/solhint/)
+Contract Testing Library - Chai: [Documentation](https://www.chaijs.com/api/)
 
-Solhint Supported Rules: [Rules](https://github.com/protofire/solhint/blob/master/docs/rules.md)
+Hardhat Testing Documentation: [Documentation](https://hardhat.org/tutorial/testing-contracts)
 
-### 4.6. Format Tool
+#### 4.4.1. Hardhat Official Plugins
 
-Prettier Official Documentation: [Documentation](https://prettier.io/docs/en/)
+Hardhat Toolbox: [Documentation](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-toolbox)
+
+Hardhat Ethers: [Documentation](https://hardhat.org/hardhat-runner/plugins/nomiclabs-hardhat-ethers)
+
+Hardhat Chai Matchers: [Documentation](https://hardhat.org/hardhat-chai-matchers/docs/overview)
+
+Hardhat Network Helpers: [Documentation](https://hardhat.org/hardhat-network-helpers/docs/overview)
+
+Hardhat Etherscan: [Documentation](https://hardhat.org/hardhat-runner/plugins/nomiclabs-hardhat-etherscan)
+
+#### 4.4.2. Hardhat Community Plugins
+
+Hardhat Gas Reporter: [Documentation](https://www.npmjs.com/package/hardhat-gas-reporter)
+
+Hardhat Solidity Coverage: [Documentation](https://www.npmjs.com/package/solidity-coverage)
+
+Hardhat Typechain: [Documentation](https://www.npmjs.com/package/@typechain/hardhat)
+
+Hardhat Contract Sizer: [Documentation](https://www.npmjs.com/package/hardhat-contract-sizer)
+
+Hardhat Storage Layout: [Documentation](https://www.npmjs.com/package/hardhat-storage-layout)
+
+### 4.5. Openzeppelin Documentation
+
+Official Documentation: [Documentation](https://docs.openzeppelin.com/)
+
+Contracts Wizard: [Wizard](https://docs.openzeppelin.com/contracts/4.x/wizard)
+
+### 4.6. Lint Tool
+
+Official Documentation: [Documentation](https://protofire.github.io/solhint/)
+
+Supported Rules: [Rules](https://github.com/protofire/solhint/blob/master/docs/rules.md)
+
+### 4.7. Format Tool
+
+Official Documentation: [Documentation](https://prettier.io/docs/en/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

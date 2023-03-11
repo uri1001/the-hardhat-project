@@ -1,10 +1,9 @@
 import { HardhatUserConfig } from 'hardhat/config'
 import '@nomicfoundation/hardhat-toolbox'
-
-import 'hardhat-gas-reporter'
+import 'hardhat-contract-sizer'
+import 'hardhat-storage-layout'
 
 import './tasks/accounts'
-import './tasks/extendAccounts'
 import './tasks/info'
 import './tasks/network'
 
@@ -29,6 +28,9 @@ if (!process.env.polygonAPIKey || process.env.polygonAPIKey.length < 1)
 if (!process.env.arbitrumAPIKey || process.env.arbitrumAPIKey.length < 1)
     throw new Error('Missing Arbitrum API Key')
 
+if (!process.env.optimismAPIKey || process.env.optimismAPIKey.length < 1)
+    throw new Error('Missing Optimism API Key')
+
 if (!process.env.bscAPIKey || process.env.bscAPIKey.length < 1)
     throw new Error('Missing BSC API Key')
 
@@ -45,9 +47,12 @@ const config: HardhatUserConfig = {
             },
         },
     },
+
+    paths: { tests: 'tests' },
+
     networks: {
         mainnet: {
-            url: `https://mainnet.infura.io/v3/${process.env.infuraAPIKey}`,
+            url: `https://mainnet.infura.io/v3/${process.env.infuraProjectID}`,
             chainId: 1,
             accounts: [
                 process.env.projectPrivateKey,
@@ -56,7 +61,7 @@ const config: HardhatUserConfig = {
             ],
         },
         goerli: {
-            url: `https://goerli.infura.io/v3/${process.env.infuraAPIKey}`,
+            url: `https://goerli.infura.io/v3/${process.env.infuraProjectID}`,
             chainId: 5,
             accounts: [
                 process.env.projectPrivateKey,
@@ -65,7 +70,7 @@ const config: HardhatUserConfig = {
             ],
         },
         polygon: {
-            url: `https://polygon-mainnet.infura.io/v3/${process.env.infuraAPIKey}`,
+            url: `https://polygon-mainnet.infura.io/v3/${process.env.infuraProjectID}`,
             chainId: 137,
             accounts: [
                 process.env.projectPrivateKey,
@@ -74,7 +79,7 @@ const config: HardhatUserConfig = {
             ],
         },
         polygonMumbai: {
-            url: `https://polygon-mumbai.infura.io/v3/${process.env.infuraAPIKey}`,
+            url: `https://polygon-mumbai.infura.io/v3/${process.env.infuraProjectID}`,
             chainId: 80001,
             accounts: [
                 process.env.projectPrivateKey,
@@ -83,7 +88,7 @@ const config: HardhatUserConfig = {
             ],
         },
         arbitrumOne: {
-            url: `https://arbitrum-mainnet.infura.io/v3/${process.env.infuraAPIKey}`,
+            url: `https://arbitrum-mainnet.infura.io/v3/${process.env.infuraProjectID}`,
             chainId: 42161,
             accounts: [
                 process.env.projectPrivateKey,
@@ -92,8 +97,26 @@ const config: HardhatUserConfig = {
             ],
         },
         arbitrumGoerli: {
-            url: `https://arbitrum-goerli.infura.io/v3/${process.env.infuraAPIKey}`,
+            url: `https://arbitrum-goerli.infura.io/v3/${process.env.infuraProjectID}`,
             chainId: 421613,
+            accounts: [
+                process.env.projectPrivateKey,
+                process.env.masterPrivateKey,
+                process.env.backupPrivateKey,
+            ],
+        },
+        optimisticEthereum: {
+            url: `https://optimism-mainnet.infura.io/v3/${process.env.infuraProjectID}`,
+            chainId: 10,
+            accounts: [
+                process.env.projectPrivateKey,
+                process.env.masterPrivateKey,
+                process.env.backupPrivateKey,
+            ],
+        },
+        optimisticGoerli: {
+            url: `https://optimism-goerli.infura.io/v3/${process.env.infuraProjectID}`,
+            chainId: 420,
             accounts: [
                 process.env.projectPrivateKey,
                 process.env.masterPrivateKey,
@@ -146,6 +169,8 @@ const config: HardhatUserConfig = {
             polygonMumbai: process.env.polygonAPIKey,
             arbitrumOne: process.env.arbitrumAPIKey,
             arbitrumGoerli: process.env.arbitrumAPIKey,
+            optimisticEthereum: process.env.optimismAPIKey,
+            optimisticGoerli: process.env.optimismAPIKey,
             bsc: process.env.bscAPIKey,
             bscTestnet: process.env.bscAPIKey,
             cronos: process.env.cronosAPIKey,
@@ -175,6 +200,16 @@ const config: HardhatUserConfig = {
         currency: 'USD',
         token: 'ETH',
         gasPriceApi: 'https://api.etherscan.io/api?module=proxy&action=eth_gasPrice',
+    },
+
+    contractSizer: {
+        alphaSort: false,
+        runOnCompile: true,
+        disambiguatePaths: false,
+        strict: false,
+        only: [],
+        except: [],
+        outputFile: 'reports/contract-sizer.txt',
     },
 }
 
