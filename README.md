@@ -15,7 +15,8 @@
 <h3 align="center">Hardhat Environment Template</h3>
 
   <p align="center">
-    Hardhat Environment Template with a Professional Basic Setup
+    Hardhat Environment Template with an Advanced Basic Setup
+    <br />
     <br />
     <a href="https://github.com/uri1001/tgp-hardhat"><strong>Explore the docs »</strong></a>
     <br />

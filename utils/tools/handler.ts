@@ -30,7 +30,7 @@ export const handleContractFunction = async (
     try {
         const tx: TransactionResponse = await fn(...args)
 
-        if ('wait' in tx) {
+        if (Object.hasOwn(tx, 'wait')) {
             const txReceipt: TransactionReceipt = await tx.wait()
 
             console.log(`----- ${functionName.toUpperCase()} - FUNCTION EXECUTED -----`)

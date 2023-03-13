@@ -21,6 +21,8 @@ contract TokenizedBallot {
     uint256 public targetBlockNumber;
     uint256 public numProposals;
 
+    event VoteCasted(address indexed from, uint indexed proposal, uint256 amount);
+
     constructor(bytes32[] memory proposalNames, address _tokenContract, uint256 _targetBlockNumber) {
         tokenContract = IMyToken(_tokenContract);
         targetBlockNumber = _targetBlockNumber;
@@ -32,10 +34,13 @@ contract TokenizedBallot {
     }
 
     function vote(uint proposal, uint256 amount) external {
+        require(amount > 0, "Not Valid Voting Power Amount");
         require(votingPower(msg.sender) >= amount, "Not Enough Voting Power");
 
         votingPowerSpent[msg.sender] += amount;
         proposals[proposal].voteCount += amount;
+
+        emit VoteCasted(msg.sender, proposal, amount);
     }
 
     function votingPower(address account) public view returns (uint256) {
@@ -54,6 +59,6 @@ contract TokenizedBallot {
     }
 
     function winnerName() external view returns (bytes32 winnerName_) {
-        winnerName_ = proposals[winningProposal()].name;
+        return proposals[winningProposal()].name;
     }
 }

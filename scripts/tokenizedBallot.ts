@@ -66,19 +66,35 @@ const tokenizedBallot = async (): Promise<void> => {
         }
     }
 
+    // Check Voting Power of Deployer
+    const vpd = await handleContractFunction(contract, 'votingPower', deployer, deployer.address)
+
+    // Deployer Votes Proposal 1 with All of it's Voting Power
+    await vote(contract, deployer, 1, vpd[0].toNumber())
+
     // Check Voting Power of Account 1
-    const vp = await handleContractFunction(contract, 'votingPower', account1, account1.address)
-    console.log(vp)
-    console.log(vp[0])
+    const vp1 = await handleContractFunction(contract, 'votingPower', account1, account1.address)
+
+    // Account 1 Votes Proposal 1 with All of it's Voting Power
+    await vote(contract, account1, 1, vp1[0].toNumber())
 
     // Check Voting Power of Account 2
-    await handleContractFunction(contract, 'votingPower', account2, account2.address)
+    const vp2 = await handleContractFunction(contract, 'votingPower', account2, account2.address)
 
-    // // Account 1 Votes Proposal 1 with 75 Units of Voting Power
-    // await vote(contract, account1, 1, 75)
+    // Account 2 Votes Proposal 3 with All of it's Voting Power
+    await vote(contract, account2, 3, vp2[0].toNumber())
 
-    // // Account 2 Votes Proposal 3 with 100 Units of Voting Power
-    // await vote(contract, account2, 3, 100)
+    // Check Number of Winning Proposal
+    const winningProposal = await handleContractFunction(contract, 'winningProposal', deployer)
+
+    console.log(`\nWinning Proposal Number: ${winningProposal[0]}\n`)
+
+    // Check Winning Proposal Name
+    const winningProposalName = await handleContractFunction(contract, 'winnerName', deployer)
+
+    const wpn = ethers.utils.parseBytes32String(winningProposalName[0])
+
+    console.log(`\nWinning Proposal Name: ${wpn}\n`)
 
     await logNetworkInfo()
     await logAccountsInfo(

@@ -22,8 +22,12 @@ export const burn = async (
     console.log(`----- Burn Process Initialized -----`)
     console.log(`------------------------------------\n`)
 
-    const contractName: string = await contract.name()
-    await sleep(requestTimeout)
+    let contractName: string = 'null'
+
+    if (Object.hasOwn(contract, 'name')) {
+        contractName = await contract.name()
+        await sleep(requestTimeout)
+    }
 
     await logAccountsInfo(
         [contract.address, signer.address, account],

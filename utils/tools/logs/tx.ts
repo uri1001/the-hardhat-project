@@ -58,7 +58,7 @@ export const logTxReceipt = async (
 // Transaction Return Value Information
 export const logTxReturnValue = async (txName: string, returnValue: any[]): Promise<void> => {
     console.log(`\n- ${capitalize(txName)} Transaction Return Value -\n`)
-    console.log(`Entries:`)
+    console.log(`Return Value:`)
 
     for (let i = 0; i < returnValue.length; i++) {
         const value = returnValue[i]
