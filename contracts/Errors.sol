@@ -10,8 +10,18 @@ contract Errors {
     error SimpleError(string message);
     error ComplexError(Foo foo, string message, uint256 number);
 
+    enum Enum {
+        VALUE_ONE,
+        VALUE_TWO,
+        VALUE_THREE
+    }
+
     uint[] public emptyArray;
     uint[] public nonEmptyArray = [1, 2, 3, 4, 5];
+
+    mapping(address => bytes) private dataMap;
+
+    // Read Functions
 
     function overflowRead() public pure returns (uint256) {
         uint256 a = 2 ** 256 - 1;
@@ -27,11 +37,19 @@ contract Errors {
         return c;
     }
 
-    function infiniteLoopRead() public pure {
-        uint256 i = 0;
-        while (true) {
-            i++;
-        }
+    function wrongConvertToEnumRead(uint256 value) public pure returns (Enum) {
+        return Enum(value);
+    }
+
+    function tooMuchMemoryAllocatedRead(uint256 _size) public pure returns (uint256[] memory) {
+        uint256[] memory array = new uint256[](_size);
+        return array;
+    }
+
+    function zeroInitializedVariableRead() public pure returns (int) {
+        function(int, int) internal pure returns (int) functionPointer;
+
+        return functionPointer(0, 1);
     }
 
     function assertRead() public pure {
@@ -58,6 +76,15 @@ contract Errors {
         );
     }
 
+    function infiniteLoopRead() public pure {
+        uint256 i = 0;
+        while (true) {
+            i++;
+        }
+    }
+
+    // Write Functions
+
     function overflowWrite() public returns (uint256) {
         uint256 a = 2 ** 256 - 1;
         uint256 b = 1;
@@ -72,19 +99,27 @@ contract Errors {
         return c;
     }
 
-    function infiniteLoopWrite() public {
-        uint256 i = 0;
-        while (true) {
-            i++;
-        }
-    }
-
-    function wrongArrayPositionWrite() public returns (uint) {
-        return nonEmptyArray[10];
+    function wrongConvertToEnumWrite(uint256 value) public returns (Enum) {
+        return Enum(value);
     }
 
     function popEmptyArrayWrite() public {
         emptyArray.pop();
+    }
+
+    function outOfBoundsArrayAccessWrite() public returns (uint) {
+        return nonEmptyArray[10];
+    }
+
+    function tooMuchMemoryAllocatedWrite(uint256 _size) public returns (uint256[] memory) {
+        uint256[] memory array = new uint256[](_size);
+        return array;
+    }
+
+    function zeroInitializedVariableWrite() public returns (int) {
+        function(int, int) internal pure returns (int) functionPointer;
+
+        return functionPointer(0, 1);
     }
 
     function assertWrite() public {
@@ -109,5 +144,12 @@ contract Errors {
             "bugger",
             69
         );
+    }
+
+    function infiniteLoopWrite() public {
+        uint256 i = 0;
+        while (true) {
+            i++;
+        }
     }
 }

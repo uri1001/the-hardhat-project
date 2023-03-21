@@ -57,6 +57,9 @@ export const handleContractFunction = async (
 
         await sleep(requestTimeout)
         await logTxError(functionName, error)
+        // console.log('-----------------------------------')
+        // console.log(error)
+        // console.log('-----------------------------------')
     }
 
     return []

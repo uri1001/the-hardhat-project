@@ -1,4 +1,6 @@
-import { ethers } from 'hardhat'
+import hre from 'hardhat'
+
+// import * as fs from 'fs'
 
 import * as readline from 'node:readline/promises'
 import { stdin as input, stdout as output } from 'node:process'
@@ -12,11 +14,14 @@ import { transfer } from '../utils/scripts/transfer'
 
 // Project Tools
 import { selectContract } from '../utils/tools/select'
-import { handleContractFunction } from '../utils/tools/handler'
+import { handleContractFunction } from '../utils/tools/contract'
 import { logAccountsInfo, logNetworkInfo } from '../utils/tools/logs/info'
 
 // Project Constants
 import { addresses } from '../utils/constants'
+
+// Script Declarations
+const ethers = hre.ethers
 
 // Script
 const myERC20Votes = async (): Promise<void> => {
@@ -26,19 +31,21 @@ const myERC20Votes = async (): Promise<void> => {
 
     // SAVE STORAGE LAYOUT IN REPORTS & NOTIFY VIA CONSOLE.LOG
     //---------------------------------------------------------------------
-    // await hre.storageLayout.export()
+    await hre.storageLayout.export()
+    //fs.writeFileSync('./foo.txt', '')
     //---------------------------------------------------------------------
 
     // Script Transaction Signers
     const [deployer, account1, account2] = await ethers.getSigners()
 
-    await logNetworkInfo()
+    await logNetworkInfo(hre)
     await logAccountsInfo(
         [deployer.address, account1.address, account2.address],
         ['deployer', 'account1', 'account2'],
+        hre,
     )
 
-    // Contract Deploy / Contract Load
+    // Contract Deploy - Contract Load
     const rl = readline.createInterface({ input, output })
 
     let contract
@@ -110,10 +117,11 @@ const myERC20Votes = async (): Promise<void> => {
         await handleContractFunction(contract, 'grantRole', deployer, burnerRole, addresses[i])
     }
 
-    await logNetworkInfo()
+    await logNetworkInfo(hre)
     await logAccountsInfo(
         [deployer.address, account1.address, account2.address],
         ['deployer', 'account1', 'account2'],
+        hre,
     )
 
     console.log(`\n\n-------------------------------------------------------------`)

@@ -26,7 +26,7 @@ export const deploy = async (
     console.log(`----- Contract Deploy Process Initialized -----`)
     console.log(`-----------------------------------------------\n`)
 
-    await logAccountsInfo([signer.address], ['signer'])
+    await logAccountsInfo([signer.address], ['signer'], hre)
 
     console.log(`\n--- Contract Deploy Initialized ---\n`)
 

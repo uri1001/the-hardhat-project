@@ -1,18 +1,16 @@
-// Network Information
-import hre from 'hardhat'
-import { ethers } from 'hardhat'
+// Types
+import { HardhatRuntimeEnvironment } from 'hardhat/types'
 
 // Project Tools
 import { sleep } from '../time'
 
 // Project Constants
-import { logTimeout, requestTimeout } from '../../constants'
-
-// File Declarations
-const provider = ethers.provider
+import { logTimeout, networkParameters, requestTimeout } from '../../constants'
 
 // Network Information
-export const logNetworkInfo = async (): Promise<void> => {
+export const logNetworkInfo = async (hre: HardhatRuntimeEnvironment): Promise<void> => {
+    const provider = hre.ethers.provider
+
     const blockNumber = await provider.getBlockNumber()
     await sleep(requestTimeout)
     const feeData = await provider.getFeeData()
@@ -20,6 +18,8 @@ export const logNetworkInfo = async (): Promise<void> => {
 
     console.log(`\n- Network State Information -\n`)
     console.log(`Name: ${hre.network.name}`)
+    console.log(`Symbol: ${networkParameters[hre.network.name].symbol}`)
+    console.log(`Decimals: ${networkParameters[hre.network.name].decimals}`)
     console.log(`Block Number: ${blockNumber}`)
     console.log(`Gas Price: ${feeData.gasPrice}`)
     console.log(`Provider: ${provider}`)
@@ -36,12 +36,32 @@ export const logNetworkInfo = async (): Promise<void> => {
 }
 
 // Accounts Information
-export const logAccountsInfo = async (accounts: string[], names: string[]): Promise<void> => {
+export const logAccountsInfo = async (
+    accounts: string[],
+    names: string[] | undefined,
+    hre: HardhatRuntimeEnvironment,
+): Promise<void> => {
+    const provider = hre.ethers.provider
+
+    const symbol = networkParameters[hre.network.name].symbol
+    const decimals = networkParameters[hre.network.name].decimals
+
     console.log(`\n- Accounts State Information -\n`)
-    console.log(`#  -  Name  -  Type  -  Address  -  ENS  -  Balance [ETH]  -  Transactions Count\n`)
+
+    if (names !== undefined)
+        console.log(
+            `#  -  Name  -  Type  -  Address  -  ENS  -  Balance [${symbol}]  -  Transactions Count\n`,
+        )
+    if (names === undefined)
+        console.log(
+            `#  -  Type  -  Address  -  ENS  -  Balance [${symbol}]  -  Transactions Count\n`,
+        )
 
     for (let i = 0; i < accounts.length; i++) {
-        const balance = ethers.utils.formatEther(await provider.getBalance(accounts[i]))
+        const balance = hre.ethers.utils.formatUnits(
+            await provider.getBalance(accounts[i]),
+            decimals,
+        )
         await sleep(requestTimeout)
         const txCount = await provider.getTransactionCount(accounts[i])
         await sleep(requestTimeout)
@@ -49,16 +69,22 @@ export const logAccountsInfo = async (accounts: string[], names: string[]): Prom
         const type = code === '0x' ? 'EOA' : 'CA'
         await sleep(requestTimeout)
         const ens =
-            hre.network.name === 'hardhat' || hre.network.name === 'polygonMumbai'
-                ? 'null'
-                : await provider.lookupAddress(accounts[i])
+            hre.network.name === 'mainnet' || hre.network.name === 'goerli'
+                ? await provider.lookupAddress(accounts[i])
+                : 'null'
         await sleep(requestTimeout)
 
-        console.log(
-            `${i + 1} - ${names[i]} - ${type} - ${
-                accounts[i]
-            } - ${ens} - ${balance} ETH - ${txCount}`,
-        )
+        if (names !== undefined)
+            console.log(
+                `${i + 1} - ${names[i]} - ${type} - ${
+                    accounts[i]
+                } - ${ens} - ${balance} ${symbol} - ${txCount}`,
+            )
+
+        if (names === undefined)
+            console.log(
+                `${i + 1} - ${type} - ${accounts[i]} - ${ens} - ${balance} ${symbol} - ${txCount}`,
+            )
     }
 
     console.log(`\n---------------`)

@@ -7,11 +7,11 @@ import { sleep } from '../utils/tools/time'
 import { requestTimeout } from '../utils/constants'
 
 // Task
-task('network', 'provides selected network state information').setAction(async (taskArgs, hre) => {
+task('network', 'Provides selected network state information').setAction(async (taskArgs, hre) => {
     const provider = hre.ethers.provider
     const network = await provider.getNetwork()
 
-    console.log(`\n- Network Task Initialized -\n`)
+    console.log(`\n\n- Network Task Initialized -\n\n`)
 
     console.log(`Name: ${hre.network.name}`)
     console.log(`ID: ${network.chainId}`)
@@ -21,11 +21,11 @@ task('network', 'provides selected network state information').setAction(async (
     const feeData = await provider.getFeeData()
     await sleep(requestTimeout)
 
-    console.log(`Block: ${await provider.getBlockNumber()}`)
+    console.log(`Block Number: ${await provider.getBlockNumber()}`)
     console.log(`Gas Price: ${feeData.gasPrice}`)
     console.log(`Last Base Fee per Gas: ${feeData.lastBaseFeePerGas}`)
     console.log(`Max Fee per Gas: ${feeData.maxFeePerGas}`)
     console.log(`Max Priority Fee per Gas: ${feeData.maxPriorityFeePerGas}`)
 
-    console.log(`\n- Network Task Finalized -\n`)
+    console.log(`\n\n- Network Task Finalized -\n\n`)
 })

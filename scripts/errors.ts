@@ -1,16 +1,18 @@
 import hre from 'hardhat'
-import { ethers } from 'hardhat'
 
 import * as readline from 'node:readline/promises'
 import { stdin as input, stdout as output } from 'node:process'
 
 // Project Scripts
 import { deploy } from '../utils/scripts/deploy'
-import { handleContractFunction } from '../utils/tools/handler'
+import { handleContractFunction } from '../utils/tools/contract'
 
 // Project Tools
 import { logAccountsInfo, logNetworkInfo } from '../utils/tools/logs/info'
 import { selectContract } from '../utils/tools/select'
+
+// Script Declarations
+const ethers = hre.ethers
 
 // Script
 const errors = async (): Promise<void> => {
@@ -26,10 +28,10 @@ const errors = async (): Promise<void> => {
     // Script Transaction Signers
     const [deployer] = await ethers.getSigners()
 
-    await logNetworkInfo()
-    await logAccountsInfo([deployer.address], ['deployer'])
+    await logNetworkInfo(hre)
+    await logAccountsInfo([deployer.address], ['deployer'], hre)
 
-    // Contract Deploy / Contract Load
+    // Contract Deploy - Contract Load
     const rl = readline.createInterface({ input, output })
 
     let contract
@@ -45,10 +47,17 @@ const errors = async (): Promise<void> => {
         }
     }
 
-    // Invalid States Errors - Read Functions
+    // Panic Errors - Read Functions
     await handleContractFunction(contract, 'overflowRead')
     await handleContractFunction(contract, 'divideByZeroRead')
-    await handleContractFunction(contract, 'infiniteLoopRead')
+    await handleContractFunction(contract, 'wrongConvertToEnumRead', undefined, 3)
+    await handleContractFunction(
+        contract,
+        'tooMuchMemoryAllocatedRead',
+        undefined,
+        BigInt(2) ** BigInt(256) - BigInt(1),
+    )
+    await handleContractFunction(contract, 'zeroInitializedVariableRead')
 
     // Assert Errors - Read Functions
     await handleContractFunction(contract, 'assertRead')
@@ -61,12 +70,22 @@ const errors = async (): Promise<void> => {
     await handleContractFunction(contract, 'simpleCustomRead')
     await handleContractFunction(contract, 'complexCustomRead')
 
-    // Invalid States Errors - Write Functions
+    // Out of Gas Errors - Read Functions
+    await handleContractFunction(contract, 'infiniteLoopRead')
+
+    // Panic Errors - Write Functions
     await handleContractFunction(contract, 'overflowWrite')
     await handleContractFunction(contract, 'divideByZeroWrite')
-    await handleContractFunction(contract, 'infiniteLoopWrite')
-    await handleContractFunction(contract, 'wrongArrayPositionWrite')
+    await handleContractFunction(contract, 'wrongConvertToEnumWrite', undefined, 3)
     await handleContractFunction(contract, 'popEmptyArrayWrite')
+    await handleContractFunction(contract, 'outOfBoundsArrayAccessWrite')
+    await handleContractFunction(
+        contract,
+        'tooMuchMemoryAllocatedWrite',
+        undefined,
+        BigInt(2) ** BigInt(256) - BigInt(1),
+    )
+    await handleContractFunction(contract, 'zeroInitializedVariableWrite')
 
     // Assert Errors - Write Functions
     await handleContractFunction(contract, 'assertWrite')
@@ -78,6 +97,9 @@ const errors = async (): Promise<void> => {
     await handleContractFunction(contract, 'revertWrite')
     await handleContractFunction(contract, 'simpleCustomWrite')
     await handleContractFunction(contract, 'complexCustomWrite')
+
+    // Out of Gas Errors - Write Function
+    await handleContractFunction(contract, 'infiniteLoopWrite')
 
     console.log(`\n\n------------------------------------------------------`)
     console.log(`---------- Errors Contract Script Finalized ----------`)

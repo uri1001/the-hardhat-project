@@ -1,4 +1,4 @@
-import { ethers } from 'hardhat'
+import hre from 'hardhat'
 
 import * as readline from 'node:readline/promises'
 import { stdin as input, stdout as output } from 'node:process'
@@ -9,9 +9,12 @@ import { vote } from '../utils/scripts/vote'
 
 // Project Tools
 import { selectContract } from '../utils/tools/select'
-import { handleContractFunction } from '../utils/tools/handler'
+import { handleContractFunction } from '../utils/tools/contract'
 import { logAccountsInfo, logNetworkInfo } from '../utils/tools/logs/info'
 import { convertStringArrayToBytes32Array } from '../utils/tools/format'
+
+// Script Declarations
+const ethers = hre.ethers
 
 // Script
 const tokenizedBallot = async (): Promise<void> => {
@@ -27,10 +30,11 @@ const tokenizedBallot = async (): Promise<void> => {
     // Script Transaction Signers
     const [deployer, account1, account2] = await ethers.getSigners()
 
-    await logNetworkInfo()
+    await logNetworkInfo(hre)
     await logAccountsInfo(
         [deployer.address, account1.address, account2.address],
         ['deployer', 'account1', 'account2'],
+        hre,
     )
 
     // Contract Constructor Arguments
@@ -45,7 +49,7 @@ const tokenizedBallot = async (): Promise<void> => {
     const tokenAddress = '0x19cA7135FD75552ACEa1027065DC10AB41b38B34'
     const targetBlock = await ethers.provider.getBlockNumber()
 
-    // Contract Deploy / Contract Load
+    // Contract Deploy - Contract Load
     const rl = readline.createInterface({ input, output })
 
     let contract
@@ -96,10 +100,11 @@ const tokenizedBallot = async (): Promise<void> => {
 
     console.log(`\nWinning Proposal Name: ${wpn}\n`)
 
-    await logNetworkInfo()
+    await logNetworkInfo(hre)
     await logAccountsInfo(
         [deployer.address, account1.address, account2.address],
         ['deployer', 'account1', 'account2'],
+        hre,
     )
 
     console.log(`\n\n\n---------------------------------------------------------------`)

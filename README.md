@@ -66,6 +66,7 @@
             <li><a href="#45-openzeppelin-documentation">4.5. Openzeppelin Documentation</a></li>
             <li><a href="#46-lint-tool">4.6. Lint Tool</a></li>
             <li><a href="#47-format-tool">4.7. Format Tool</a></li>
+            <li><a href="#48-general-resources">4.8. General Resources</a></li>
         </ul>
     </li>
     <li><a href="#5-license">License</a></li>
@@ -89,18 +90,23 @@ Includes formatting, linting and source control tools with their respective rule
     -   [ ] Delegate - ERC20Votes standard delegation generic script
     -   [ ] Mint - ERC20 standard mint generic script
     -   [ ] Burn - ERC20 standard burn generic script
+    -   [ ] Transfer - ERC20 standard transfer generic script
     -   [ ] Vote - TokenizedBallot contract voting generic script
 -   [ ] Generic Tasks
     -   [ ] Accounts - selected network accounts information
     -   [ ] Info - selected address basic information
+    -   [ ] Keys - generates addresses & private keys from mnemonic phrase
     -   [ ] Network - selected network information
 -   [ ] Reporting
     -   [ ] Contract Size Report - on compilation a contract size report is generated in reports
 -   [ ] Wide Network Support
-    -   [ ] Ethereum - mainnet & goerli
+    -   [ ] Ethereum - mainnet, goerli & sepolia
     -   [ ] Polygon - polygon & polygonMumbai
     -   [ ] Arbitrum - arbitrumOne & arbitrumGoerli
-    -   [ ] Optimism - optimism & optimismGoerli
+    -   [ ] Optimism - optimisticEthereum & optimisticGoerli
+    -   [ ] Avalanche - avalanche & avalancheFujiTestnet
+    -   [ ] Gnosis - gnosis
+    -   [ ] Moonbeam - moonbeam, moonriver & moonbaseAlpha
     -   [ ] BSC - bsc & bscTestnet
     -   [ ] Cronos - cronos & cronosTestnet
 -   [ ] Hardhat Official Plugins
@@ -153,8 +159,11 @@ Package manager installation (npm)
 4. Introduce to `.env` the wallet & API keys
 
     ```js
+    projectPrivateKey = 'wallet-private-key'
     masterPrivateKey = 'wallet-private-key'
     backupPrivateKey = 'wallet-private-key'
+    xPrivateKey = 'wallet-private-key'
+    yPrivateKey = 'wallet-private-key'
 
     infuraAPIKey = 'API-key'
     alchemyAPIKey = 'API-key'
@@ -183,25 +192,36 @@ Usage: hardhat [GLOBAL OPTIONS] <TASK> [TASK OPTIONS]
 
     --config              A Hardhat config file.
     --emoji               Use emoji in messages.
+    --flamegraph          Generate a flamegraph of your Hardhat tasks.
     --help                Shows this message, or a task's help if its name is provided
     --max-memory          The maximum amount of memory that Hardhat can use.
     --network             The network to connect to.
     --show-stack-traces   Show stack traces.
     --tsconfig            A TypeScript config file.
-    --verbose             Enables Hardhat verbose logging
+    --typecheck           Enable TypeScript type-checking of your scripts/tests.
+    --verbose             Enables Hardhat verbose logging.
     --version             Shows hardhat's version.
 
     AVAILABLE TASKS:
 
-    check         Check whatever you need
-    clean         Clears the cache and deletes all artifacts
-    compile       Compiles the entire project, building all artifacts
-    console       Opens a hardhat console
-    flatten       Flattens and prints contracts and their dependencies
-    help          Prints this message
-    node          Starts a JSON-RPC server on top of Hardhat Network
-    run           Runs a user-defined script after compiling the project
-    test          Runs mocha tests
+    accounts              Provides accounts information in selected network
+    check                 Check whatever you need
+    clean                 Clears the cache and deletes all artifacts
+    compile               Compiles the entire project, building all artifacts
+    console               Opens a hardhat console
+    coverage              Generates a code coverage report for tests
+    flatten               Flattens and prints contracts and their dependencies
+    gas-reporter:merge
+    help                  Prints this message
+    info                  Provides information from selected address
+    keys                  Generates address - private key pairs from mnemonic seed phrase
+    network               Provides selected network state information
+    node                  Starts a JSON-RPC server on top of Hardhat Network
+    run                   Runs a user-defined script after compiling the project
+    size-contracts        Output the size of compiled contracts
+    test                  Runs mocha tests
+    typechain             Generate Typechain typings for compiled contracts
+    verify                Verifies contract on Etherscan
 
 To get help for a specific task run: npx hardhat help <task>
 
@@ -220,6 +240,11 @@ Deploy Contracts
 Verify Contracts
 `sh
     npx hardhat verify --network <network> <contract-address> <constructor-arguments>
+    `
+
+Supported Networks by hardhat-etherscan
+`sh
+    npx hardhat verify --list-networks
     `
 
 ### 3.3. Linting & Formatting
@@ -315,6 +340,12 @@ Supported Rules: [Rules](https://github.com/protofire/solhint/blob/master/docs/r
 ### 4.7. Format Tool
 
 Official Documentation: [Documentation](https://prettier.io/docs/en/)
+
+### 4.8. General Resources
+
+Network Parameters & RPC Nodes: [Chainlist](https://chainlist.org/)
+
+Network Wallet Connection Testing: [Chainlist](https://chainlist.wtf/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

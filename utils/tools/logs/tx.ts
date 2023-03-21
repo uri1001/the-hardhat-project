@@ -1,3 +1,4 @@
+import hre from 'hardhat'
 import { ethers } from 'hardhat'
 
 // Types
@@ -9,7 +10,7 @@ import { capitalize } from '../format'
 import { sleep } from '../time'
 
 // Project Constants
-import { logTimeout } from '../../constants'
+import { logTimeout, networkParameters } from '../../constants'
 
 // Transaction Receipt Information
 export const logTxReceipt = async (
@@ -19,13 +20,18 @@ export const logTxReceipt = async (
 ): Promise<void> => {
     const txTotalCost = txReceipt.gasUsed.mul(txReceipt.effectiveGasPrice)
 
+    const symbol = networkParameters[hre.network.name].symbol
+    const decimals = networkParameters[hre.network.name].decimals
+
     console.log(`\n- ${capitalize(txName)} Transaction Receipt -\n`)
     console.log(`Block Number: ${txReceipt.blockNumber}`)
     console.log(`Type: ${txReceipt.type}`)
     console.log(`Gas Used: ${txReceipt.gasUsed}`)
     console.log(`Cumulative Gas Used: ${txReceipt.cumulativeGasUsed}`)
     console.log(`Effective Gas Price: ${txReceipt.effectiveGasPrice}`)
-    console.log(`Total Transaction Cost: ${ethers.utils.formatEther(txTotalCost)} ETH`)
+    console.log(
+        `Total Transaction Cost: ${ethers.utils.formatUnits(txTotalCost, decimals)} ${symbol}`,
+    )
     console.log(`Transaction Hash: ${txReceipt.transactionHash}`)
     console.log(`Transaction Sender: ${txReceipt.from}`)
     console.log(`Transaction Receiver: ${txReceipt.to}`)
@@ -63,8 +69,7 @@ export const logTxReturnValue = async (txName: string, returnValue: any[]): Prom
     for (let i = 0; i < returnValue.length; i++) {
         const value = returnValue[i]
         const type = typeof value
-        const position = i.toString()
-        let output = `    ${position} - ${type} = `
+        let output = `    ${i + 1} - ${type} = `
         if (type === 'object' && value !== null) {
             const entries = Object.entries(value)
             const mappedEntries = entries.map(([key, value]) => `${key}: ${value}`)
@@ -97,5 +102,6 @@ export const logTxError = async (txName: string, error: any): Promise<void> => {
     }
 
     console.log(`\n---------------`)
+
     await sleep(logTimeout)
 }

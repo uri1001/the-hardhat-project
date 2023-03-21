@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.7.0 <0.9.0;
 
-interface IMyToken {
+interface IMyERC20Votes {
     function getPastVotes(address account, uint256 blockNumber) external view returns (uint256);
 }
 
@@ -13,7 +13,7 @@ contract TokenizedBallot {
         uint voteCount;
     }
 
-    IMyToken public tokenContract;
+    IMyERC20Votes public tokenContract;
 
     Proposal[] public proposals;
 
@@ -24,7 +24,7 @@ contract TokenizedBallot {
     event VoteCasted(address indexed from, uint indexed proposal, uint256 amount);
 
     constructor(bytes32[] memory proposalNames, address _tokenContract, uint256 _targetBlockNumber) {
-        tokenContract = IMyToken(_tokenContract);
+        tokenContract = IMyERC20Votes(_tokenContract);
         targetBlockNumber = _targetBlockNumber;
         numProposals = 0;
         for (uint i = 0; i < proposalNames.length; i++) {
