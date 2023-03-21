@@ -5,8 +5,8 @@ import * as readline from 'node:readline/promises'
 import { stdin as input, stdout as output } from 'node:process'
 
 // Types
-import { Contract } from 'ethers'
-import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
+import { type Contract } from 'ethers'
+import { type SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 
 // Project Tools
 import { sleep } from './time'

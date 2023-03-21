@@ -6,8 +6,8 @@ import { loadFixture } from '@nomicfoundation/hardhat-network-helpers'
 import { PANIC_CODES } from '@nomicfoundation/hardhat-chai-matchers/panic'
 
 // Types
-import { Contract, ContractFactory } from 'ethers'
-import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
+import { type Contract, type ContractFactory } from 'ethers'
+import { type SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 
 // Script
 describe('Errors', () => {

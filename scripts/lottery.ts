@@ -5,8 +5,8 @@ import * as readline from 'readline'
 import { deploy } from '../utils/scripts/deploy'
 
 // Types
-import { Contract, ContractFactory } from 'ethers'
-import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
+import { type Contract, type ContractFactory } from 'ethers'
+import { type SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 // import { Lottery, LotteryToken } from '../typechain-types'
 
 let contract: Contract

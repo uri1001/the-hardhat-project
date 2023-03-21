@@ -1,8 +1,8 @@
 import { ethers } from 'hardhat'
 
 // Types
-import { Contract, BigNumber } from 'ethers'
-import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
+import { type Contract, type BigNumber } from 'ethers'
+import { type SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 
 // Project Tools
 import { capitalize } from '../format'

@@ -2,8 +2,8 @@ import hre from 'hardhat'
 import { ethers } from 'hardhat'
 
 // Types
-import { Interface } from '@ethersproject/abi'
-import { TransactionReceipt } from '@ethersproject/abstract-provider'
+import { type Interface } from '@ethersproject/abi'
+import { type TransactionReceipt } from '@ethersproject/abstract-provider'
 
 // Project Tools
 import { capitalize } from '../format'

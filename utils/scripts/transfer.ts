@@ -1,8 +1,8 @@
 import hre from 'hardhat'
 
 // Types
-import { Contract } from 'ethers'
-import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
+import { type Contract } from 'ethers'
+import { type SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 
 // Project Tools
 import { handleContractFunction } from '../tools/contract'

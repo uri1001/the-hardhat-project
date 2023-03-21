@@ -3,7 +3,7 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+[![GPL-3.0 License][license-shield]][license-url]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -353,7 +353,7 @@ Network Wallet Connection Testing: [Chainlist](https://chainlist.wtf/)
 
 ## 5. License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the GPL-3.0 License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -367,4 +367,4 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [issues-shield]: https://img.shields.io/github/issues/uri1001/tgp-hardhat.svg?style=for-the-badge
 [issues-url]: https://github.com/uri1001/tgp-hardhat/issues
 [license-shield]: https://img.shields.io/github/license/uri1001/tgp-hardhat.svg?style=for-the-badge
-[license-url]: https://github.com/uri1001/tgp-hardhat/blob/master/LICENSE.txt
+[license-url]: https://github.com/uri1001/tgp-hardhat/blob/master/LICENSE

@@ -4,8 +4,8 @@ import { expect } from 'chai'
 import { loadFixture } from '@nomicfoundation/hardhat-network-helpers'
 
 // Types
-import { BigNumber, Contract, ContractFactory } from 'ethers'
-import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
+import { type BigNumber, type Contract, type ContractFactory } from 'ethers'
+import { type SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 
 // Project Tools
 import { convertStringArrayToBytes32Array } from '../utils/tools/format'

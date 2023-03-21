@@ -2,9 +2,9 @@ import hre from 'hardhat'
 import { ethers } from 'hardhat'
 
 // Types
-import { Contract, ContractFactory } from 'ethers'
-import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
-import { TransactionReceipt } from '@ethersproject/abstract-provider'
+import { type Contract, type ContractFactory } from 'ethers'
+import { type SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
+import { type TransactionReceipt } from '@ethersproject/abstract-provider'
 
 // Project Tools
 import { logAccountsInfo } from '../tools/logs/info'

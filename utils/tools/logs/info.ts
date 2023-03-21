@@ -1,5 +1,5 @@
 // Types
-import { HardhatRuntimeEnvironment } from 'hardhat/types'
+import { type HardhatRuntimeEnvironment } from 'hardhat/types'
 
 // Project Tools
 import { sleep } from '../time'

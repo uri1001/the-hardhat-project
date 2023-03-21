@@ -1,7 +1,7 @@
 // Types
-import { Contract } from 'ethers'
-import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
-import { TransactionReceipt, TransactionResponse } from '@ethersproject/abstract-provider'
+import { type Contract } from 'ethers'
+import { type SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
+import { type TransactionReceipt, type TransactionResponse } from '@ethersproject/abstract-provider'
 
 // Project Tools
 import { logTxError, logTxReceipt, logTxReturnValue } from './logs/tx'
