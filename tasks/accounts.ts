@@ -1,7 +1,7 @@
 import { task } from 'hardhat/config'
 
-// Project Tools
-import { logAccountsInfo, logNetworkInfo } from '../utils/tools/logs/info'
+// Project Logs
+import { logAccountsInfo, logNetworkInfo } from '@/logs/info'
 
 // Task
 task('accounts', 'Provides accounts information in selected network').setAction(

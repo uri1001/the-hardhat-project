@@ -4,12 +4,14 @@ import { type SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 import { type TransactionReceipt, type TransactionResponse } from '@ethersproject/abstract-provider'
 
 // Project Tools
-import { logTxError, logTxReceipt, logTxReturnValue } from './logs/tx'
-import { capitalize } from './format'
-import { sleep } from './time'
+import { capitalize } from '@/tools/format'
+import { sleep } from '@/tools/time'
+
+// Project Logs
+import { logTxError, logTxReceipt, logTxReturnValue } from '@/logs/tx'
 
 // Project Constants
-import { requestTimeout } from '../constants'
+import { requestTimeout } from '@/constants'
 
 type ContractFunction = (...args: any[]) => Promise<any>
 

@@ -6,19 +6,21 @@ import * as readline from 'node:readline/promises'
 import { stdin as input, stdout as output } from 'node:process'
 
 // Project Scripts
-import { burn } from '../utils/scripts/burn'
-import { delegate } from '../utils/scripts/delegate'
-import { deploy } from '../utils/scripts/deploy'
-import { mint } from '../utils/scripts/mint'
-import { transfer } from '../utils/scripts/transfer'
+import { burn } from '@/scripts/burn'
+import { delegate } from '@/scripts/delegate'
+import { deploy } from '@/scripts/deploy'
+import { mint } from '@/scripts/mint'
+import { transfer } from '@/scripts/transfer'
 
 // Project Tools
-import { selectContract } from '../utils/tools/select'
-import { handleContractFunction } from '../utils/tools/contract'
-import { logAccountsInfo, logNetworkInfo } from '../utils/tools/logs/info'
+import { selectContract } from '@/tools/select'
+import { handleContractFunction } from '@/tools/contract'
+
+// Project Logs
+import { logAccountsInfo, logNetworkInfo } from '@/logs/info'
 
 // Project Constants
-import { addresses } from '../utils/constants'
+import { addresses } from '@/constants'
 
 // Script Declarations
 const ethers = hre.ethers

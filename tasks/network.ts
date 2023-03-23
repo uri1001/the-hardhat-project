@@ -1,10 +1,10 @@
 import { task } from 'hardhat/config'
 
 // Project Tools
-import { sleep } from '../utils/tools/time'
+import { sleep } from '@/tools/time'
 
 // Project Constants
-import { requestTimeout } from '../utils/constants'
+import { requestTimeout } from '@/constants'
 
 // Task
 task('network', 'Provides selected network state information').setAction(async (taskArgs, hre) => {

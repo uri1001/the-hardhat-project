@@ -8,7 +8,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/uri1001/tgp-hardhat">
+  <a href="https://github.com/uri1001/the-hardhat-project">
     <img src="assets/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -18,12 +18,12 @@
     Hardhat Environment Template with an Advanced Basic Setup
     <br />
     <br />
-    <a href="https://github.com/uri1001/tgp-hardhat"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/uri1001/the-hardhat-project"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/uri1001/tgp-hardhat/issues">Report Bug</a>
+    <a href="https://github.com/uri1001/the-hardhat-project/issues">Report Bug</a>
     ·
-    <a href="https://github.com/uri1001/tgp-hardhat/issues">Request Feature</a>
+    <a href="https://github.com/uri1001/the-hardhat-project/issues">Request Feature</a>
   </p>
 </div>
 
@@ -69,7 +69,8 @@
             <li><a href="#48-general-resources">4.8. General Resources</a></li>
         </ul>
     </li>
-    <li><a href="#5-license">License</a></li>
+    <li><a href="#5-contact">Contact</a></li>
+    <li><a href="#6-license">License</a></li>
   </ol>
 </details>
 
@@ -98,10 +99,11 @@ Includes formatting, linting and source control tools with their respective rule
     -   [ ] Keys - generates addresses & private keys from mnemonic phrase
     -   [ ] Network - selected network information
 -   [ ] Reporting
+    -   [ ] Contract Gas Report - on compilation a contract gas usage report is generated in reports
     -   [ ] Contract Size Report - on compilation a contract size report is generated in reports
 -   [ ] Wide Network Support
     -   [ ] Ethereum - mainnet, goerli & sepolia
-    -   [ ] Polygon - polygon & polygonMumbai
+    -   [ ] Polygon - polygon, polygonMumbai & polygonZKEVMTestnet
     -   [ ] Arbitrum - arbitrumOne & arbitrumGoerli
     -   [ ] Optimism - optimisticEthereum & optimisticGoerli
     -   [ ] Avalanche - avalanche & avalancheFujiTestnet
@@ -125,7 +127,7 @@ Includes formatting, linting and source control tools with their respective rule
 -   [ ] Code Formatting with Prettier
 -   [ ] Code Formatting Enforcement with Husky
 
-See the [open issues](https://github.com/uri1001/tgp-hardhat/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/uri1001/the-hardhat-project/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -146,7 +148,7 @@ Package manager installation (npm)
 
 1. Clone the repo
     ```sh
-    git clone https://github.com/uri1001/tgp-hardhat.git
+    git clone https://github.com/uri1001/the-hardhat-project.git
     ```
 2. Install NPM packages
     ```sh
@@ -347,11 +349,23 @@ Network Parameters & RPC Nodes: [Chainlist](https://chainlist.org/)
 
 Network Wallet Connection Testing: [Chainlist](https://chainlist.wtf/)
 
+Ethereum Testnets Faucet Status: [FaucetLink](https://faucetlink.to/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTACT -->
+
+## 5. Contact
+
+Oriol Rodríguez Setó - uri1001@pm.me
+
+Project Link: [https://github.com/uri1001/the-hardhat-project](https://github.com/uri1001/the-hardhat-project)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LICENSE -->
 
-## 5. License
+## 6. License
 
 Distributed under the GPL-3.0 License. See `LICENSE` for more information.
 
@@ -360,11 +374,11 @@ Distributed under the GPL-3.0 License. See `LICENSE` for more information.
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/uri1001/tgp-hardhat.svg?style=for-the-badge
-[contributors-url]: https://github.com/uri1001/tgp-hardhat/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/uri1001/tgp-hardhat.svg?style=for-the-badge
-[forks-url]: https://github.com/uri1001/tgp-hardhat/network/members
-[issues-shield]: https://img.shields.io/github/issues/uri1001/tgp-hardhat.svg?style=for-the-badge
-[issues-url]: https://github.com/uri1001/tgp-hardhat/issues
-[license-shield]: https://img.shields.io/github/license/uri1001/tgp-hardhat.svg?style=for-the-badge
-[license-url]: https://github.com/uri1001/tgp-hardhat/blob/master/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/uri1001/the-hardhat-project.svg?style=for-the-badge
+[contributors-url]: https://github.com/uri1001/the-hardhat-project/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/uri1001/the-hardhat-project.svg?style=for-the-badge
+[forks-url]: https://github.com/uri1001/the-hardhat-project/network/members
+[issues-shield]: https://img.shields.io/github/issues/uri1001/the-hardhat-project.svg?style=for-the-badge
+[issues-url]: https://github.com/uri1001/the-hardhat-project/issues
+[license-shield]: https://img.shields.io/github/license/uri1001/the-hardhat-project.svg?style=for-the-badge
+[license-url]: https://github.com/uri1001/the-hardhat-project/blob/master/LICENSE

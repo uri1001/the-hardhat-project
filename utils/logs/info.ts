@@ -2,10 +2,13 @@
 import { type HardhatRuntimeEnvironment } from 'hardhat/types'
 
 // Project Tools
-import { sleep } from '../time'
+import { sleep } from '@/tools/time'
+
+// Project Networks
+import { networkParameters } from '@/networks'
 
 // Project Constants
-import { logTimeout, networkParameters, requestTimeout } from '../../constants'
+import { logTimeout, requestTimeout } from '@/constants'
 
 // Network Information
 export const logNetworkInfo = async (hre: HardhatRuntimeEnvironment): Promise<void> => {

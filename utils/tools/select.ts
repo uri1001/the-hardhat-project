@@ -9,10 +9,10 @@ import { type Contract } from 'ethers'
 import { type SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 
 // Project Tools
-import { sleep } from './time'
+import { sleep } from '@/tools/time'
 
 // Project Constants
-import { requestTimeout } from '../constants'
+import { requestTimeout } from '@/constants'
 
 export const selectContract = async (contractName: string): Promise<Contract> => {
     if (contractName === undefined) throw new Error('Contract Name Undefined')

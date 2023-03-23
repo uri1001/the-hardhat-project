@@ -131,6 +131,11 @@ const config: HardhatUserConfig = {
             chainId: 100,
             accounts: standardAccounts,
         },
+        chiado: {
+            url: `https://rpc.chiadochain.net`,
+            chainId: 10200,
+            accounts: standardAccounts,
+        },
         moonbeam: {
             url: `https://1rpc.io/glmr`,
             chainId: 1284,
@@ -190,6 +195,14 @@ const config: HardhatUserConfig = {
                 urls: {
                     apiURL: 'https://explorer.public.zkevm-test.net/api',
                     browserURL: 'https://explorer.public.zkevm-test.net/',
+                },
+            },
+            {
+                network: 'chiado',
+                chainId: 1442,
+                urls: {
+                    apiURL: 'https://blockscout.com/gnosis/chiado/api',
+                    browserURL: 'https://blockscout.com/gnosis/chiado/',
                 },
             },
             {

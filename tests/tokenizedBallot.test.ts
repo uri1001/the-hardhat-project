@@ -8,7 +8,7 @@ import { type BigNumber, type Contract, type ContractFactory } from 'ethers'
 import { type SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 
 // Project Tools
-import { convertStringArrayToBytes32Array } from '../utils/tools/format'
+import { convertStringArrayToBytes32Array } from '@/tools/format'
 
 // Test Constants
 const proposals = [

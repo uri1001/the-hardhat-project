@@ -7,13 +7,15 @@ import { type SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 import { type TransactionReceipt } from '@ethersproject/abstract-provider'
 
 // Project Tools
-import { logAccountsInfo } from '../tools/logs/info'
-import { logProcessParameters, logProcessReceipt } from '../tools/logs/process'
-import { logTxError, logTxReceipt } from '../tools/logs/tx'
-import { sleep } from '../tools/time'
+import { sleep } from '@/tools/time'
+
+// Project Logs
+import { logAccountsInfo } from '@/logs/info'
+import { logProcessParameters, logProcessReceipt } from '@/logs/process'
+import { logTxError, logTxReceipt } from '@/logs/tx'
 
 // Project Constants
-import { processTimeout, requestTimeout, verifyTimeout } from '../constants'
+import { processTimeout, requestTimeout, verifyTimeout } from '@/constants'
 
 // Script
 export const deploy = async (

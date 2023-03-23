@@ -6,11 +6,14 @@ import { type Interface } from '@ethersproject/abi'
 import { type TransactionReceipt } from '@ethersproject/abstract-provider'
 
 // Project Tools
-import { capitalize } from '../format'
-import { sleep } from '../time'
+import { capitalize } from '@/tools/format'
+import { sleep } from '@/tools/time'
+
+// Project Networks
+import { networkParameters } from '@/networks'
 
 // Project Constants
-import { logTimeout, networkParameters } from '../../constants'
+import { logTimeout } from '@/constants'
 
 // Transaction Receipt Information
 export const logTxReceipt = async (

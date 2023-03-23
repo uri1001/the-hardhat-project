@@ -5,11 +5,11 @@ import { type Contract, type BigNumber } from 'ethers'
 import { type SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 
 // Project Tools
-import { capitalize } from '../format'
-import { sleep } from '../time'
+import { capitalize } from '@/tools/format'
+import { sleep } from '@/tools/time'
 
 // Project Constants
-import { logTimeout, requestTimeout } from '../../constants'
+import { logTimeout, requestTimeout } from '@/constants'
 
 // Process Parameters Information
 export const logProcessParameters = async (

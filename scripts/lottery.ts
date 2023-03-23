@@ -2,7 +2,7 @@ import { ethers } from 'hardhat'
 import * as readline from 'readline'
 
 // Project Scripts
-import { deploy } from '../utils/scripts/deploy'
+import { deploy } from '@/scripts/deploy'
 
 // Types
 import { type Contract, type ContractFactory } from 'ethers'

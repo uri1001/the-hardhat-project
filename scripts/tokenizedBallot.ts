@@ -4,14 +4,16 @@ import * as readline from 'node:readline/promises'
 import { stdin as input, stdout as output } from 'node:process'
 
 // Project Scripts
-import { deploy } from '../utils/scripts/deploy'
-import { vote } from '../utils/scripts/vote'
+import { deploy } from '@/scripts/deploy'
+import { vote } from '@/scripts/vote'
 
 // Project Tools
-import { selectContract } from '../utils/tools/select'
-import { handleContractFunction } from '../utils/tools/contract'
-import { logAccountsInfo, logNetworkInfo } from '../utils/tools/logs/info'
-import { convertStringArrayToBytes32Array } from '../utils/tools/format'
+import { selectContract } from '@/tools/select'
+import { handleContractFunction } from '@/tools/contract'
+import { convertStringArrayToBytes32Array } from '@/tools/format'
+
+// Project Logs
+import { logAccountsInfo, logNetworkInfo } from '@/logs/info'
 
 // Script Declarations
 const ethers = hre.ethers
