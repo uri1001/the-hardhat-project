@@ -11,6 +11,11 @@ import {
     polygon,
     polygonMumbai,
     polygonZkEvmTestnet,
+    arbitrumGoerli,
+    optimisticGoerli,
+    avalancheFujiTestnet,
+    baseGoerli,
+    gnosisChiado,
 } from 'evm-networks/networks'
 
 import './utils/tasks/accounts'
@@ -81,29 +86,29 @@ const config: HardhatUserConfig = {
 
     networks: {
         mainnet: {
-            url: `${mainnet.rpcNodes.default.http[0]}`,
+            url: `${mainnet.rpcNodes.omnia.http[0]}`,
             // url: `${mainnet.rpcNodes.infura.http[0]}${process.env.infuraProjectID}`,
             chainId: mainnet.id,
             accounts: standardAccounts,
         },
         goerli: {
-            url: `${goerli.rpcNodes.default.http[0]}`,
+            url: `${goerli.rpcNodes.omnia.http[0]}`,
             // url: `${goerli.rpcNodes.infura.http[0]}${process.env.infuraProjectID}`,
             chainId: goerli.id,
             accounts: standardAccounts,
         },
         sepolia: {
-            url: `${sepolia.rpcNodes.infura.http[0]}${process.env.infuraProjectID}`,
+            url: `${sepolia.rpcNodes.omnia.http[0]}`,
             chainId: sepolia.id,
             accounts: standardAccounts,
         },
         polygon: {
-            url: `${polygon.rpcNodes.infura.http[0]}${process.env.infuraProjectID}`,
+            url: `${polygon.rpcNodes.omnia.http[0]}`,
             chainId: polygon.id,
             accounts: standardAccounts,
         },
         polygonMumbai: {
-            url: `${polygonMumbai.rpcNodes.infura.http[0]}${process.env.infuraProjectID}`,
+            url: `${polygonMumbai.rpcNodes.omnia.http[0]}`,
             chainId: polygonMumbai.id,
             accounts: standardAccounts,
         },
@@ -113,12 +118,12 @@ const config: HardhatUserConfig = {
             accounts: standardAccounts,
         },
         arbitrumOne: {
-            url: `https://arbitrum-mainnet.infura.io/v3/${process.env.infuraProjectID}`,
+            url: `${polygonMumbai.rpcNodes.omnia.http[0]}`,
             chainId: 42161,
             accounts: standardAccounts,
         },
         arbitrumGoerli: {
-            url: `https://arbitrum-goerli.infura.io/v3/${process.env.infuraProjectID}`,
+            url: `${arbitrumGoerli.rpcNodes.omnia.http[0]}`,
             chainId: 421613,
             accounts: standardAccounts,
         },
@@ -128,7 +133,7 @@ const config: HardhatUserConfig = {
             accounts: standardAccounts,
         },
         optimisticGoerli: {
-            url: `https://optimism-goerli.infura.io/v3/${process.env.infuraProjectID}`,
+            url: `${optimisticGoerli.rpcNodes.omniatech.http[0]}`,
             chainId: 420,
             accounts: standardAccounts,
         },
@@ -138,7 +143,7 @@ const config: HardhatUserConfig = {
             accounts: standardAccounts,
         },
         avalancheFujiTestnet: {
-            url: `https://avalanche-fuji.infura.io/v3/${process.env.infuraProjectID}`,
+            url: `${avalancheFujiTestnet.rpcNodes.omnia.http[0]}`,
             chainId: 43113,
             accounts: standardAccounts,
         },
@@ -148,7 +153,7 @@ const config: HardhatUserConfig = {
             accounts: standardAccounts,
         },
         chiado: {
-            url: `https://rpc.chiadochain.net`,
+            url: gnosisChiado.rpcNodes.gnosisProvider.http[1],
             chainId: 10200,
             accounts: standardAccounts,
         },
@@ -187,12 +192,18 @@ const config: HardhatUserConfig = {
             chainId: 338,
             accounts: standardAccounts,
         },
+        baseGoerli: {
+            url: baseGoerli.rpcNodes.base.http[0],
+            chainId: baseGoerli.id,
+            accounts: standardAccounts,
+        },
     },
 
     etherscan: {
         apiKey: {
             mainnet: process.env.ethereumAPIKey,
             goerli: process.env.ethereumAPIKey,
+            sepolia: process.env.ethereumAPIKey,
             polygon: process.env.polygonAPIKey,
             polygonMumbai: process.env.polygonAPIKey,
             arbitrumOne: process.env.arbitrumAPIKey,

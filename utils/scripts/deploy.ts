@@ -20,12 +20,15 @@ export const deploy = async (
     hre: HardhatRuntimeEnvironment,
     contractName: string,
     signer: SignerWithAddress,
-    args: any[],
-    argsNames: string[],
+    args?: any[],
+    argsNames?: string[],
 ): Promise<Contract> => {
     console.log(`\n-----------------------------------------------`)
     console.log(`----- Contract Deploy Process Initialized -----`)
     console.log(`-----------------------------------------------\n`)
+
+    if (args === undefined) args = []
+    if (argsNames === undefined) argsNames = []
 
     await logAccountsInfo([signer.address], ['signer'], hre)
 
