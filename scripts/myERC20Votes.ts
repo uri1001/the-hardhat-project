@@ -5,22 +5,24 @@ import hre from 'hardhat'
 import * as readline from 'node:readline/promises'
 import { stdin as input, stdout as output } from 'node:process'
 
+// Project Utils
+
 // Project Scripts
-import { burn } from '@/scripts/burn'
-import { delegate } from '@/scripts/delegate'
-import { deploy } from '@/scripts/deploy'
-import { mint } from '@/scripts/mint'
-import { transfer } from '@/scripts/transfer'
+import { burn } from '../utils/scripts/burn'
+import { delegate } from '../utils/scripts/delegate'
+import { deploy } from '../utils/scripts/deploy'
+import { mint } from '../utils/scripts/mint'
+import { transfer } from '../utils/scripts/transfer'
 
 // Project Tools
-import { selectContract } from '@/tools/select'
-import { handleContractFunction } from '@/tools/contract'
+import { selectContract } from '../utils/tools/select'
+import { handleContractFunction } from '../utils/tools/contract'
 
 // Project Logs
-import { logAccountsInfo, logNetworkInfo } from '@/logs/info'
+import { logAccountsInfo, logNetworkInfo } from '../utils/logs/info'
 
 // Project Constants
-import { addresses } from '@/constants'
+import { addresses } from '../utils/constants'
 
 // Script Declarations
 const ethers = hre.ethers
@@ -98,16 +100,16 @@ const myERC20Votes = async (): Promise<void> => {
     const burnerRole = ethers.utils.keccak256(ethers.utils.toUtf8Bytes('BURNER_ROLE'))
 
     // Deployer Grants Minter Role to Account 1
-    await handleContractFunction(contract, 'grantRole', deployer, minterRole, account1.address)
+    await handleContractFunction(contract, 'grantRole', deployer, null, minterRole, account1.address)
 
     // Deployer Grants Minter Role to Account 2
-    await handleContractFunction(contract, 'grantRole', deployer, minterRole, account2.address)
+    await handleContractFunction(contract, 'grantRole', deployer, null, minterRole, account2.address)
 
     // Deployer Grants Burner Role to Account 1
-    await handleContractFunction(contract, 'grantRole', deployer, burnerRole, account1.address)
+    await handleContractFunction(contract, 'grantRole', deployer, null, burnerRole, account1.address)
 
     // Deployer Grants Burner Role to Account 2
-    await handleContractFunction(contract, 'grantRole', deployer, burnerRole, account2.address)
+    await handleContractFunction(contract, 'grantRole', deployer, null, burnerRole, account2.address)
 
     // Account 1 Mints 100 Tokens for Account 2
     await mint(contract, account1, account2.address, 100)
@@ -115,8 +117,8 @@ const myERC20Votes = async (): Promise<void> => {
     // Mint & Grant Roles for All Addresses
     for (let i = 0; i < addresses.length; i++) {
         await mint(contract, deployer, addresses[i], 100)
-        await handleContractFunction(contract, 'grantRole', deployer, minterRole, addresses[i])
-        await handleContractFunction(contract, 'grantRole', deployer, burnerRole, addresses[i])
+        await handleContractFunction(contract, 'grantRole', deployer, null, minterRole, addresses[i])
+        await handleContractFunction(contract, 'grantRole', deployer, null, burnerRole, addresses[i])
     }
 
     await logNetworkInfo(hre)

@@ -1,22 +1,22 @@
-import hre from 'hardhat'
-
 // Types
 import { type Contract } from 'ethers'
+import { type HardhatRuntimeEnvironment } from 'hardhat/types'
 import { type SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 
-// Project Tools
-import { handleContractFunction } from '@/tools/contract'
-import { sleep } from '@/tools/time'
+// Tools
+import { handleContractFunction } from '../tools/contract'
+import { sleep } from '../tools/time'
 
-// Project Logs
-import { logAccountsInfo } from '@/logs/info'
-import { logProcessParameters, logProcessReceipt } from '@/logs/process'
+// Logs
+import { logAccountsInfo } from '../logs/info'
+import { logProcessParameters, logProcessReceipt } from '../logs/process'
 
-// Project Constants
-import { processTimeout, requestTimeout } from '@/constants'
+// Constants
+import { processTimeout, requestTimeout } from '../constants'
 
 // Script
 export const burn = async (
+    hre: HardhatRuntimeEnvironment,
     contract: Contract,
     signer: SignerWithAddress,
     account: string,
@@ -47,7 +47,11 @@ export const burn = async (
         ['to', 'amount'],
     )
 
-    await handleContractFunction(contract, 'burn', signer, account, amount)
+    await handleContractFunction(hre, contract, 'burn', {
+        signer: signer,
+        args: [account, amount],
+        argsNames: ['account', 'amount'],
+    })
 
     await logProcessReceipt(contract, signer, 'burn', [account, amount], states)
 

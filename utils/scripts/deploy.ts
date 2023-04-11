@@ -1,24 +1,23 @@
-import hre from 'hardhat'
-import { ethers } from 'hardhat'
-
 // Types
 import { type Contract, type ContractFactory } from 'ethers'
+import { type HardhatRuntimeEnvironment } from 'hardhat/types'
 import { type SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 import { type TransactionReceipt } from '@ethersproject/abstract-provider'
 
-// Project Tools
-import { sleep } from '@/tools/time'
+// Tools
+import { sleep } from '../tools/time'
 
-// Project Logs
-import { logAccountsInfo } from '@/logs/info'
-import { logProcessParameters, logProcessReceipt } from '@/logs/process'
-import { logTxError, logTxReceipt } from '@/logs/tx'
+// Logs
+import { logAccountsInfo } from '../logs/info'
+import { logProcessParameters, logProcessReceipt } from '../logs/process'
+import { logTxError, logTxReceipt } from '../logs/tx'
 
-// Project Constants
-import { processTimeout, requestTimeout, verifyTimeout } from '@/constants'
+// Constants
+import { processTimeout, requestTimeout, verifyTimeout } from '../constants'
 
 // Script
 export const deploy = async (
+    hre: HardhatRuntimeEnvironment,
     contractName: string,
     signer: SignerWithAddress,
     args: any[],
@@ -40,7 +39,7 @@ export const deploy = async (
         ['name', ...argsNames],
     )
 
-    const contractFactory: ContractFactory = await ethers.getContractFactory(contractName)
+    const contractFactory: ContractFactory = await hre.ethers.getContractFactory(contractName)
     const contract: Contract = await contractFactory.connect(signer).deploy(...args)
 
     try {
@@ -51,7 +50,7 @@ export const deploy = async (
         console.log(`\n----- DEPLOY - FUNCTION EXECUTED -----\n`)
 
         await sleep(requestTimeout)
-        await logTxReceipt('deploy', txReceipt, contract.interface)
+        await logTxReceipt(hre, 'deploy', txReceipt, contract.interface)
     } catch (error) {
         console.log(`\n----- DEPLOY - FUNCTION ERROR -----\n`)
 

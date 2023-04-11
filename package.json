@@ -1,4 +1,32 @@
 {
+    "name": "the-hardhat-project",
+    "version": "0.1.0",
+    "description": "Hardhat Enviroment With Advanced Tools Integrated",
+    "author": "Oriol Rodríguez Setó <uri1001@pm.me>",
+    "license": "MIT",
+    "main": "src/index.ts",
+    "homepage": "https://github.com/uri1001/the-hardhat-project#readme",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/uri1001/the-hardhat-project"
+    },
+    "bugs": "https://github.com/uri1001/the-hardhat-project/issues",
+    "contributors": [
+        "uri1001 <uri1001@pm.me>"
+    ],
+    "husky": {
+        "hooks": {
+            "pre-push": "npm run prettier:solidity"
+        }
+    },
+    "scripts": {
+        "solhint": "./node_modules/.bin/solhint -f table contracts/**/*.sol",
+        "prettier:solidity": "./node_modules/.bin/prettier --write contracts/**/*.sol"
+    },
+    "dependencies": {
+        "@openzeppelin/contracts": "^4.8.2",
+        "evm-networks": "^0.1.0"
+    },
     "devDependencies": {
         "@nomicfoundation/hardhat-toolbox": "^2.0.1",
         "dotenv": "^16.0.3",
@@ -10,17 +38,5 @@
         "prettier-plugin-solidity": "^1.1.2",
         "solhint": "^3.4.0",
         "solhint-plugin-prettier": "^0.0.5"
-    },
-    "scripts": {
-        "solhint": "./node_modules/.bin/solhint -f table contracts/**/*.sol",
-        "prettier:solidity": "./node_modules/.bin/prettier --write contracts/**/*.sol"
-    },
-    "husky": {
-        "hooks": {
-            "pre-push": "npm run prettier:solidity"
-        }
-    },
-    "dependencies": {
-        "@openzeppelin/contracts": "^4.8.2"
     }
 }

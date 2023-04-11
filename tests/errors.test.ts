@@ -221,4 +221,55 @@ describe('Errors', () => {
             // })
         })
     })
+
+    describe('Payable Functions', () => {
+        describe('Payable Errors', () => {
+            it('Should emit error that it is not a payable function', async () => {
+                const { contract } = await loadFixture(deployFixture)
+
+                expect(contract.errorNonPayable({ value: ethers.utils.formatUnits(1001, 0) })).to.be
+                    .rejected
+            })
+        })
+
+        describe('Require Errors', () => {
+            it('Should revert with requirement', async () => {
+                const { contract } = await loadFixture(deployFixture)
+
+                await expect(contract.requireWrite()).to.be.revertedWithoutReason()
+            })
+        })
+
+        describe('Revert Errors', () => {
+            it('Should revert with revert message', async () => {
+                const { contract } = await loadFixture(deployFixture)
+
+                await expect(
+                    contract.revertPayable({ value: ethers.utils.formatUnits(1001, 0) }),
+                ).to.be.revertedWith('This is a revert message')
+            })
+
+            it('Should revert with simple custom error', async () => {
+                const { contract } = await loadFixture(deployFixture)
+
+                await expect(
+                    contract.simpleCustomPayable({ value: ethers.utils.formatUnits(1001, 0) }),
+                ).to.be.revertedWithCustomError(contract, 'SimpleError')
+            })
+
+            it('Should revert with complex custom error', async () => {
+                const { contract } = await loadFixture(deployFixture)
+
+                await expect(
+                    contract.complexCustomPayable({ value: ethers.utils.formatUnits(1001, 0) }),
+                ).to.be.revertedWithCustomError(contract, 'ComplexError')
+            })
+
+            // it('Should revert with no reason', async () => {
+            //     const { contract } = await loadFixture(deployFixture)
+
+            //     await expect(contract.infiniteLoopPayable({ value: ethers.utils.formatUnits(1001, 0) })).to.be.revertedWithoutReason()
+            // })
+        })
+    })
 })

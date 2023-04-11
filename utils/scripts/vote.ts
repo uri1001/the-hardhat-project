@@ -1,22 +1,22 @@
-import hre from 'hardhat'
-
 // Types
 import { type Contract } from 'ethers'
+import { type HardhatRuntimeEnvironment } from 'hardhat/types'
 import { type SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 
-// Project Tools
-import { handleContractFunction } from '@/tools/contract'
-import { sleep } from '@/tools/time'
+// Tools
+import { handleContractFunction } from '../tools/contract'
+import { sleep } from '../tools/time'
 
-// Project Logs
-import { logAccountsInfo } from '@/logs/info'
-import { logProcessParameters, logProcessReceipt } from '@/logs/process'
+// Logs
+import { logAccountsInfo } from '../logs/info'
+import { logProcessParameters, logProcessReceipt } from '../logs/process'
 
-// Project Constants
-import { processTimeout, requestTimeout } from '@/constants'
+// Constants
+import { processTimeout, requestTimeout } from '../constants'
 
 // Script
 export const vote = async (
+    hre: HardhatRuntimeEnvironment,
     contract: Contract,
     signer: SignerWithAddress,
     proposal: number,
@@ -43,7 +43,11 @@ export const vote = async (
         ['proposal', 'amount'],
     )
 
-    await handleContractFunction(contract, 'vote', signer, proposal, amount)
+    await handleContractFunction(hre, contract, 'vote', {
+        signer: signer,
+        args: [proposal, amount],
+        argsNames: ['proposal', 'amount'],
+    })
 
     await logProcessReceipt(contract, signer, 'vote', [proposal, amount], states)
 

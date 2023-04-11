@@ -7,8 +7,10 @@ import { loadFixture } from '@nomicfoundation/hardhat-network-helpers'
 import { type BigNumber, type Contract, type ContractFactory } from 'ethers'
 import { type SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 
+// Project Utils
+
 // Project Tools
-import { convertStringArrayToBytes32Array } from '@/tools/format'
+import { convertStringArrayToBytes32Array } from '../utils/tools/format'
 
 // Test Constants
 const proposals = [

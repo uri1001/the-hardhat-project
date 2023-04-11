@@ -1,13 +1,15 @@
 import { ethers } from 'hardhat'
 import * as readline from 'readline'
 
-// Project Scripts
-import { deploy } from '@/scripts/deploy'
-
 // Types
 import { type Contract, type ContractFactory } from 'ethers'
 import { type SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 // import { Lottery, LotteryToken } from '../typechain-types'
+
+// Project Utils
+
+// Project Scripts
+import { deploy } from '../utils/scripts/deploy'
 
 let contract: Contract
 let token: any

@@ -1,4 +1,4 @@
-import { ethers } from 'hardhat'
+import { ethers } from 'ethers'
 
 export const convertStringArrayToBytes32Array = (array: string[]): string[] => {
     const bytes32Array = []

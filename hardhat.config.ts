@@ -1,14 +1,25 @@
-import { HardhatUserConfig } from 'hardhat/config'
 import '@nomicfoundation/hardhat-toolbox'
 import 'hardhat-contract-sizer'
 import 'hardhat-storage-layout'
 
-import './tasks/accounts'
-import './tasks/info'
-import './tasks/keys'
-import './tasks/network'
-
 import * as dotenv from 'dotenv'
+
+import {
+    mainnet,
+    goerli,
+    sepolia,
+    polygon,
+    polygonMumbai,
+    polygonZkEvmTestnet,
+} from 'evm-networks/networks'
+
+import './utils/tasks/accounts'
+import './utils/tasks/info'
+import './utils/tasks/keys'
+import './utils/tasks/network'
+
+import { type HardhatUserConfig } from 'hardhat/config'
+
 dotenv.config()
 
 if (!process.env.projectPrivateKey || process.env.projectPrivateKey.length < 1)
@@ -65,35 +76,40 @@ const config: HardhatUserConfig = {
 
     paths: { tests: 'tests' },
 
+    // IMPLEMENT FORMAT AUTH ENDPOINT FUNCTION
+    // EXTEND NUMBER OF NETWORKS
+
     networks: {
         mainnet: {
-            url: `https://mainnet.infura.io/v3/${process.env.infuraProjectID}`,
-            chainId: 1,
+            url: `${mainnet.rpcNodes.default.http[0]}`,
+            // url: `${mainnet.rpcNodes.infura.http[0]}${process.env.infuraProjectID}`,
+            chainId: mainnet.id,
             accounts: standardAccounts,
         },
         goerli: {
-            url: `https://goerli.infura.io/v3/${process.env.infuraProjectID}`,
-            chainId: 5,
+            url: `${goerli.rpcNodes.default.http[0]}`,
+            // url: `${goerli.rpcNodes.infura.http[0]}${process.env.infuraProjectID}`,
+            chainId: goerli.id,
             accounts: standardAccounts,
         },
         sepolia: {
-            url: `https://sepolia.infura.io/v3/${process.env.infuraProjectID}`,
-            chainId: 11155111,
+            url: `${sepolia.rpcNodes.infura.http[0]}${process.env.infuraProjectID}`,
+            chainId: sepolia.id,
             accounts: standardAccounts,
         },
         polygon: {
-            url: `https://polygon-mainnet.infura.io/v3/${process.env.infuraProjectID}`,
-            chainId: 137,
+            url: `${polygon.rpcNodes.infura.http[0]}${process.env.infuraProjectID}`,
+            chainId: polygon.id,
             accounts: standardAccounts,
         },
         polygonMumbai: {
-            url: `https://polygon-mumbai.infura.io/v3/${process.env.infuraProjectID}`,
-            chainId: 80001,
+            url: `${polygonMumbai.rpcNodes.infura.http[0]}${process.env.infuraProjectID}`,
+            chainId: polygonMumbai.id,
             accounts: standardAccounts,
         },
-        polygonZKEVMTestnet: {
-            url: `https://rpc.public.zkevm-test.net/`,
-            chainId: 1442,
+        polygonZkEvmTestnet: {
+            url: `${polygonZkEvmTestnet.rpcNodes.default.http}`,
+            chainId: polygonZkEvmTestnet.id,
             accounts: standardAccounts,
         },
         arbitrumOne: {
@@ -190,16 +206,16 @@ const config: HardhatUserConfig = {
         },
         customChains: [
             {
-                network: 'polygonZKEVMTestnet',
-                chainId: 1442,
+                network: 'polygonZkEvmTestnet',
+                chainId: polygonZkEvmTestnet.id,
                 urls: {
-                    apiURL: 'https://explorer.public.zkevm-test.net/api',
-                    browserURL: 'https://explorer.public.zkevm-test.net/',
+                    apiURL: polygonZkEvmTestnet.blockExplorers.default.apiUrl,
+                    browserURL: polygonZkEvmTestnet.blockExplorers.default.browserUrl,
                 },
             },
             {
                 network: 'chiado',
-                chainId: 1442,
+                chainId: 10200,
                 urls: {
                     apiURL: 'https://blockscout.com/gnosis/chiado/api',
                     browserURL: 'https://blockscout.com/gnosis/chiado/',

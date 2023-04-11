@@ -152,4 +152,41 @@ contract Errors {
             i++;
         }
     }
+
+    // Payable Functions
+
+    function errorNonPayable() public pure returns (uint256) {
+        return 69;
+    }
+
+    function assertPayable() public payable {
+        assert(false);
+    }
+
+    function requirePayable() public payable {
+        require(false);
+    }
+
+    function revertPayable() public payable {
+        revert("This is a revert message");
+    }
+
+    function simpleCustomPayable() public payable {
+        revert SimpleError("bugger");
+    }
+
+    function complexCustomPayable() public payable {
+        revert ComplexError(
+            Foo({ sender: 0x0000000000000000000000000000000000000000, bar: 69 }),
+            "bugger",
+            69
+        );
+    }
+
+    function infiniteLoopPayable() public payable {
+        uint256 i = 0;
+        while (true) {
+            i++;
+        }
+    }
 }

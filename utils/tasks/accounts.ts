@@ -1,11 +1,11 @@
 import { task } from 'hardhat/config'
 
-// Project Logs
-import { logAccountsInfo, logNetworkInfo } from '@/logs/info'
+// Logs
+import { logAccountsInfo, logNetworkInfo } from '../logs/info'
 
 // Task
 task('accounts', 'Provides accounts information in selected network').setAction(
-    async (taskArgs, hre) => {
+    async (_taskArgs, hre) => {
         const accounts = await hre.ethers.getSigners()
 
         console.log(`\n\n- Network Available Accounts & State Information Initialized -\n\n`)

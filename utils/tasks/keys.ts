@@ -5,7 +5,7 @@ import { stdin as input, stdout as output } from 'node:process'
 
 // Task
 task('keys', 'Generates address - private key pairs from mnemonic seed phrase').setAction(
-    async (taskArgs, hre) => {
+    async (_taskArgs, hre) => {
         console.log(`\n\n- Mnemonic Derived Accounts with Private Keys Initialized -\n\n`)
 
         const rl = readline.createInterface({ input, output })

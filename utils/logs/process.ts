@@ -1,15 +1,17 @@
-import { ethers } from 'hardhat'
+import { ethers } from 'ethers'
 
 // Types
 import { type Contract, type BigNumber } from 'ethers'
 import { type SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 
-// Project Tools
-import { capitalize } from '@/tools/format'
-import { sleep } from '@/tools/time'
+// Tools
+import { capitalize } from '../tools/format'
+import { sleep } from '../tools/time'
 
-// Project Constants
-import { logTimeout, requestTimeout } from '@/constants'
+// Constants
+import { logTimeout, requestTimeout } from '../constants'
+
+import { logTxArgs } from './tx'
 
 // Process Parameters Information
 export const logProcessParameters = async (
@@ -144,8 +146,7 @@ export const logProcessParameters = async (
             break
     }
 
-    console.log(`${capitalize(processName)} Function Arguments\n`)
-    for (let i = 0; i < args.length; i++) console.log(`    ${i + 1} - ${argsNames[i]}: ${args[i]}`)
+    logTxArgs(processName, args, argsNames)
 
     console.log(`\n---------------`)
     await sleep(logTimeout)

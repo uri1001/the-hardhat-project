@@ -1,10 +1,10 @@
 import { task } from 'hardhat/config'
 
-// Project Tools
-import { sleep } from '@/tools/time'
+// Tools
+import { sleep } from '../tools'
 
-// Project Constants
-import { requestTimeout } from '@/constants'
+// Constants
+import { requestTimeout } from '../constants'
 
 // Task
 task('info', 'Provides information from selected address')

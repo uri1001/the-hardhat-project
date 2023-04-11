@@ -3,15 +3,17 @@ import hre from 'hardhat'
 import * as readline from 'node:readline/promises'
 import { stdin as input, stdout as output } from 'node:process'
 
+// Project Utils
+
 // Project Scripts
-import { deploy } from '@/scripts/deploy'
+import { deploy } from '../utils/scripts/deploy'
 
 // Project Tools
-import { handleContractFunction } from '@/tools/contract'
-import { selectContract } from '@/tools/select'
+import { handleContractFunction } from '../utils/tools/contract'
+import { selectContract } from '../utils/tools/select'
 
 // Project Logs
-import { logAccountsInfo, logNetworkInfo } from '@/logs/info'
+import { logAccountsInfo, logNetworkInfo } from '../utils/logs/info'
 
 // Script Declarations
 const ethers = hre.ethers
@@ -52,11 +54,12 @@ const errors = async (): Promise<void> => {
     // Panic Errors - Read Functions
     await handleContractFunction(contract, 'overflowRead')
     await handleContractFunction(contract, 'divideByZeroRead')
-    await handleContractFunction(contract, 'wrongConvertToEnumRead', undefined, 3)
+    await handleContractFunction(contract, 'wrongConvertToEnumRead', null, null, 3)
     await handleContractFunction(
         contract,
         'tooMuchMemoryAllocatedRead',
-        undefined,
+        null,
+        null,
         BigInt(2) ** BigInt(256) - BigInt(1),
     )
     await handleContractFunction(contract, 'zeroInitializedVariableRead')
@@ -78,13 +81,14 @@ const errors = async (): Promise<void> => {
     // Panic Errors - Write Functions
     await handleContractFunction(contract, 'overflowWrite')
     await handleContractFunction(contract, 'divideByZeroWrite')
-    await handleContractFunction(contract, 'wrongConvertToEnumWrite', undefined, 3)
+    await handleContractFunction(contract, 'wrongConvertToEnumWrite', null, null, 3)
     await handleContractFunction(contract, 'popEmptyArrayWrite')
     await handleContractFunction(contract, 'outOfBoundsArrayAccessWrite')
     await handleContractFunction(
         contract,
         'tooMuchMemoryAllocatedWrite',
-        undefined,
+        null,
+        null,
         BigInt(2) ** BigInt(256) - BigInt(1),
     )
     await handleContractFunction(contract, 'zeroInitializedVariableWrite')

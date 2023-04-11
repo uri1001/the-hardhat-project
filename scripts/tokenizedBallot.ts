@@ -3,17 +3,19 @@ import hre from 'hardhat'
 import * as readline from 'node:readline/promises'
 import { stdin as input, stdout as output } from 'node:process'
 
+// Project Utils
+
 // Project Scripts
-import { deploy } from '@/scripts/deploy'
-import { vote } from '@/scripts/vote'
+import { deploy } from '../utils/scripts/deploy'
+import { vote } from '../utils/scripts/vote'
 
 // Project Tools
-import { selectContract } from '@/tools/select'
-import { handleContractFunction } from '@/tools/contract'
-import { convertStringArrayToBytes32Array } from '@/tools/format'
+import { selectContract } from '../utils/tools/select'
+import { handleContractFunction } from '../utils/tools/contract'
+import { convertStringArrayToBytes32Array } from '../utils/tools/format'
 
 // Project Logs
-import { logAccountsInfo, logNetworkInfo } from '@/logs/info'
+import { logAccountsInfo, logNetworkInfo } from '../utils/logs/info'
 
 // Script Declarations
 const ethers = hre.ethers
@@ -73,19 +75,37 @@ const tokenizedBallot = async (): Promise<void> => {
     }
 
     // Check Voting Power of Deployer
-    const vpd = await handleContractFunction(contract, 'votingPower', deployer, deployer.address)
+    const vpd = await handleContractFunction(
+        contract,
+        'votingPower',
+        deployer,
+        null,
+        deployer.address,
+    )
 
     // Deployer Votes Proposal 1 with All of it's Voting Power
     await vote(contract, deployer, 1, vpd[0].toNumber())
 
     // Check Voting Power of Account 1
-    const vp1 = await handleContractFunction(contract, 'votingPower', account1, account1.address)
+    const vp1 = await handleContractFunction(
+        contract,
+        'votingPower',
+        account1,
+        null,
+        account1.address,
+    )
 
     // Account 1 Votes Proposal 1 with All of it's Voting Power
     await vote(contract, account1, 1, vp1[0].toNumber())
 
     // Check Voting Power of Account 2
-    const vp2 = await handleContractFunction(contract, 'votingPower', account2, account2.address)
+    const vp2 = await handleContractFunction(
+        contract,
+        'votingPower',
+        account2,
+        null,
+        account2.address,
+    )
 
     // Account 2 Votes Proposal 3 with All of it's Voting Power
     await vote(contract, account2, 3, vp2[0].toNumber())

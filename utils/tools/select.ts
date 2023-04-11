@@ -1,27 +1,28 @@
-import hre from 'hardhat'
-import { ethers } from 'hardhat'
-
 import * as readline from 'node:readline/promises'
 import { stdin as input, stdout as output } from 'node:process'
 
 // Types
 import { type Contract } from 'ethers'
+import { type HardhatRuntimeEnvironment } from 'hardhat/types'
 import { type SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 
-// Project Tools
-import { sleep } from '@/tools/time'
+// Tools
+import { sleep } from './time'
 
-// Project Constants
-import { requestTimeout } from '@/constants'
+// Constants
+import { requestTimeout } from '../constants'
 
-export const selectContract = async (contractName: string): Promise<Contract> => {
+export const selectContract = async (
+    hre: HardhatRuntimeEnvironment,
+    contractName: string,
+): Promise<Contract> => {
     if (contractName === undefined) throw new Error('Contract Name Undefined')
 
     const rl = readline.createInterface({ input, output })
 
     while (true) {
         const contractAddress = await rl.question('\n- Introduce Target Contract Address: ')
-        const contract: Contract = await ethers.getContractAt(contractName, contractAddress)
+        const contract: Contract = await hre.ethers.getContractAt(contractName, contractAddress)
         await sleep(requestTimeout)
 
         const valid = await contract.resolvedAddress
@@ -40,6 +41,7 @@ export const selectContract = async (contractName: string): Promise<Contract> =>
 
 // TO IMPLEMENT & AT THE SAME TIME FIX ACCOUNTS TASK
 export const selectSigner = async (
+    hre: HardhatRuntimeEnvironment,
     type: string,
     contractName?: string,
 ): Promise<Contract | SignerWithAddress> => {
@@ -63,9 +65,9 @@ export const selectSigner = async (
         for (const account of accounts) {
             if (k === Number(walletSelected)) {
                 const balance = hre.ethers.utils.formatEther(
-                    await ethers.provider.getBalance(account.address),
+                    await hre.ethers.provider.getBalance(account.address),
                 )
-                const txCount = await ethers.provider.getTransactionCount(account.address)
+                const txCount = await hre.ethers.provider.getTransactionCount(account.address)
                 await sleep(requestTimeout)
 
                 console.log(`\nSelected Account: ${account.address} - ${balance} - ${txCount}`)
