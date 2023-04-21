@@ -4,7 +4,6 @@
     "description": "Hardhat Enviroment With Advanced Tools Integrated",
     "author": "Oriol Rodríguez Setó <uri1001@pm.me>",
     "license": "MIT",
-    "main": "src/index.ts",
     "homepage": "https://github.com/uri1001/the-hardhat-project#readme",
     "repository": {
         "type": "git",

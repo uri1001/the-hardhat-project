@@ -57,7 +57,7 @@ const theWagmiVsMoonbaseAlphaAddr = '0x356d2ef1BdB397c79A0bEc4B9Fe39232a1a2670e'
 // deploy block number: 28852389
 // deploy tx hash: 0x7813c06051f1f85cfb2c730e255b4bee727acbe0c6c4a2c25aabd31bdc6c63ec
 // block explorer: https://testnet.bscscan.com/address/0x3C4A4d8791Ba45cd832C9e2F04C955F76D4629A7
-const theWagmiVsBscTestnetAddr = '0x3C4A4d8791Ba45cd832C9e2F04C955F76D4629A7'
+const theWagmiVsBscTestnetAddr = '0x356d2ef1BdB397c79A0bEc4B9Fe39232a1a2670e'
 
 // --- Cronos Testnet ---
 // network id: 338

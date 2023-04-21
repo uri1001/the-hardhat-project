@@ -23,5 +23,8 @@ export const logTxError = async (txName: string, error: any): Promise<void> => {
 
     console.log(`\n---------------`)
 
+    console.log(error)
+    console.log(typeof error)
+
     await sleep(logTimeout)
 }

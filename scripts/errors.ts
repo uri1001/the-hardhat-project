@@ -43,69 +43,69 @@ const errors = async (): Promise<void> => {
     while (true) {
         const answer = await rl.question('\n- Deploy Contract (y/n): ')
         if (answer === 'y') {
-            contract = await deploy('Errors', deployer, [], [])
+            contract = await deploy(hre, 'Errors', deployer, [], [])
             break
         } else if (answer === 'n') {
-            contract = await selectContract('Errors')
+            contract = await selectContract(hre, 'Errors')
             break
         }
     }
 
-    // Panic Errors - Read Functions
-    await handleContractFunction(contract, 'overflowRead')
-    await handleContractFunction(contract, 'divideByZeroRead')
-    await handleContractFunction(contract, 'wrongConvertToEnumRead', null, null, 3)
-    await handleContractFunction(
-        contract,
-        'tooMuchMemoryAllocatedRead',
-        null,
-        null,
-        BigInt(2) ** BigInt(256) - BigInt(1),
-    )
-    await handleContractFunction(contract, 'zeroInitializedVariableRead')
+    // // Panic Errors - Read Functions
+    // await handleContractFunction(contract, 'overflowRead')
+    // await handleContractFunction(contract, 'divideByZeroRead')
+    // await handleContractFunction(contract, 'wrongConvertToEnumRead', null, null, 3)
+    // await handleContractFunction(
+    //     contract,
+    //     'tooMuchMemoryAllocatedRead',
+    //     null,
+    //     null,
+    //     BigInt(2) ** BigInt(256) - BigInt(1),
+    // )
+    // await handleContractFunction(contract, 'zeroInitializedVariableRead')
 
-    // Assert Errors - Read Functions
-    await handleContractFunction(contract, 'assertRead')
+    // // Assert Errors - Read Functions
+    // await handleContractFunction(contract, 'assertRead')
 
-    // Require Errors - Read Funtions
-    await handleContractFunction(contract, 'requireRead')
+    // // Require Errors - Read Funtions
+    // await handleContractFunction(contract, 'requireRead')
 
-    // Revert Errors - Read Functions
-    await handleContractFunction(contract, 'revertRead')
-    await handleContractFunction(contract, 'simpleCustomRead')
-    await handleContractFunction(contract, 'complexCustomRead')
+    // // Revert Errors - Read Functions
+    // await handleContractFunction(contract, 'revertRead')
+    // await handleContractFunction(contract, 'simpleCustomRead')
+    // await handleContractFunction(contract, 'complexCustomRead')
 
-    // Out of Gas Errors - Read Functions
-    await handleContractFunction(contract, 'infiniteLoopRead')
+    // // Out of Gas Errors - Read Functions
+    // await handleContractFunction(contract, 'infiniteLoopRead')
 
-    // Panic Errors - Write Functions
-    await handleContractFunction(contract, 'overflowWrite')
-    await handleContractFunction(contract, 'divideByZeroWrite')
-    await handleContractFunction(contract, 'wrongConvertToEnumWrite', null, null, 3)
-    await handleContractFunction(contract, 'popEmptyArrayWrite')
-    await handleContractFunction(contract, 'outOfBoundsArrayAccessWrite')
-    await handleContractFunction(
-        contract,
-        'tooMuchMemoryAllocatedWrite',
-        null,
-        null,
-        BigInt(2) ** BigInt(256) - BigInt(1),
-    )
-    await handleContractFunction(contract, 'zeroInitializedVariableWrite')
+    // // Panic Errors - Write Functions
+    // await handleContractFunction(contract, 'overflowWrite')
+    // await handleContractFunction(contract, 'divideByZeroWrite')
+    // await handleContractFunction(contract, 'wrongConvertToEnumWrite', null, null, 3)
+    // await handleContractFunction(contract, 'popEmptyArrayWrite')
+    // await handleContractFunction(contract, 'outOfBoundsArrayAccessWrite')
+    // await handleContractFunction(
+    //     contract,
+    //     'tooMuchMemoryAllocatedWrite',
+    //     null,
+    //     null,
+    //     BigInt(2) ** BigInt(256) - BigInt(1),
+    // )
+    // await handleContractFunction(contract, 'zeroInitializedVariableWrite')
 
-    // Assert Errors - Write Functions
-    await handleContractFunction(contract, 'assertWrite')
+    // // Assert Errors - Write Functions
+    // await handleContractFunction(contract, 'assertWrite')
 
-    // Require Errors - Write Functions
-    await handleContractFunction(contract, 'requireWrite')
+    // // Require Errors - Write Functions
+    // await handleContractFunction(contract, 'requireWrite')
 
-    // Revert Errors - Write Functions
-    await handleContractFunction(contract, 'revertWrite')
-    await handleContractFunction(contract, 'simpleCustomWrite')
-    await handleContractFunction(contract, 'complexCustomWrite')
+    // // Revert Errors - Write Functions
+    // await handleContractFunction(contract, 'revertWrite')
+    // await handleContractFunction(contract, 'simpleCustomWrite')
+    // await handleContractFunction(contract, 'complexCustomWrite')
 
-    // Out of Gas Errors - Write Function
-    await handleContractFunction(contract, 'infiniteLoopWrite')
+    // // Out of Gas Errors - Write Function
+    // await handleContractFunction(contract, 'infiniteLoopWrite')
 
     console.log(`\n\n------------------------------------------------------`)
     console.log(`---------- Errors Contract Script Finalized ----------`)
