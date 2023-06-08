@@ -23,7 +23,7 @@
         "prettier:solidity": "./node_modules/.bin/prettier --write contracts/**/*.sol"
     },
     "dependencies": {
-        "@openzeppelin/contracts": "^4.8.2",
+        "@openzeppelin/contracts": "^4.9.1",
         "evm-networks": "^0.1.0"
     },
     "devDependencies": {
